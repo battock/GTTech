@@ -1,19 +1,21 @@
 package com.example.gumtreetechtest.ui.screens
 
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.Text
+import androidx.compose.material.Button
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavController
 import com.example.gumtreetechtest.ui.components.HeaderText
 import com.example.gumtreetechtest.ui.themes.GumTreeAppTheme
+import com.example.gumtreetechtest.ui.viewmodels.SearchScreenViewModel
 
 
 @Composable
 fun SearchScreen(
-    modifier: Modifier = Modifier,
-    searchScreenTitleTxt:String = "SEARCH"
+    navController: NavController,
+    viewModel: SearchScreenViewModel
 ){
     Column(modifier = Modifier
         .fillMaxSize(),
@@ -21,8 +23,11 @@ fun SearchScreen(
         verticalArrangement = Arrangement.Center
     ) {
         HeaderText(
-            text = searchScreenTitleTxt
+            text = "searchScreenTitleTxt"
         )
+        Button(
+            onClick = {}) {
+        }
     }
 }
 
@@ -30,7 +35,7 @@ fun SearchScreen(
 @Composable
 fun DefaultPreview() {
     GumTreeAppTheme {
-        SearchScreen()
+        //SearchScreen()
     }
 }
 
@@ -38,6 +43,6 @@ fun DefaultPreview() {
 @Composable
 fun DarkPreview() {
     GumTreeAppTheme {
-        SearchScreen()
+        //SearchScreen()
     }
 }

@@ -7,11 +7,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavController
 import com.example.gumtreetechtest.ui.components.HeaderText
 import com.example.gumtreetechtest.ui.themes.GumTreeAppTheme
 
 @Composable
 fun ResultsScreen(
+    navController: NavController,
     resultsScreenTitleTxt: String = "RESULTS",
     modifier: Modifier = Modifier
 ) {
@@ -22,7 +24,7 @@ fun ResultsScreen(
         verticalArrangement = Arrangement.Center
     ) {
         items(1) {
-            (0..2000).forEach {
+            (0..200).forEach {
                 HeaderText(
                     text = "$resultsScreenTitleTxt number $it"
                 )
@@ -35,7 +37,7 @@ fun ResultsScreen(
 @Composable
 fun DefaultResultsPreview() {
     GumTreeAppTheme {
-        ResultsScreen()
+        //ResultsScreen()
     }
 }
 
@@ -43,6 +45,6 @@ fun DefaultResultsPreview() {
 @Composable
 fun DarkResultsPreview() {
     GumTreeAppTheme {
-        ResultsScreen()
+        //ResultsScreen()
     }
 }
