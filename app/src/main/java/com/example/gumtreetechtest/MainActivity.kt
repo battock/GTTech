@@ -16,23 +16,25 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.gumtreetechtest.navigation.Screen
-import com.example.gumtreetechtest.ui.screens.ResultsScreen
-import com.example.gumtreetechtest.ui.screens.SearchScreen
+import com.example.gumtreetechtest.ui.screens.InfoScreen
+import com.example.gumtreetechtest.ui.screens.MainScreen
 import com.example.gumtreetechtest.ui.themes.GumTreeAppTheme
-import com.example.gumtreetechtest.ui.viewmodels.SearchScreenViewModel
+import com.example.gumtreetechtest.ui.viewmodels.MainViewModel
+import dagger.hilt.EntryPoint
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
     private val navItems = listOf(
-        Screen.SearchScreen,
-        Screen.ResultsScreen
+        Screen.MainScreen,
+        Screen.InfoScreen
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val viewModel: SearchScreenViewModel by viewModels()
+        val viewModel: MainViewModel by viewModels()
 
         setContent {
             val navController = rememberNavController()
@@ -68,11 +70,11 @@ class MainActivity : ComponentActivity() {
                 ) { innerPadding ->
                     NavHost(
                         navController,
-                        startDestination = Screen.SearchScreen.route,
+                        startDestination = Screen.MainScreen.route,
                         Modifier.padding(innerPadding)
                     ) {
-                        composable(Screen.SearchScreen.route) { backStackEntry-> SearchScreen(navController, viewModel) }
-                        composable(Screen.ResultsScreen.route) { ResultsScreen(navController) }
+                        composable(Screen.MainScreen.route) { backStackEntry-> MainScreen(navController, viewModel) }
+                        composable(Screen.InfoScreen.route) { InfoScreen(navController) }
                     }
 
                 }

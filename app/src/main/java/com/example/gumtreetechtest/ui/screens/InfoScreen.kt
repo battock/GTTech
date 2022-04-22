@@ -1,57 +1,49 @@
 package com.example.gumtreetechtest.ui.screens
 
-import com.example.gumtreetechtest.R
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.Button
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
+import com.example.gumtreetechtest.ui.components.DescriptionText
 import com.example.gumtreetechtest.ui.components.HeaderText
 import com.example.gumtreetechtest.ui.themes.GumTreeAppTheme
-import com.example.gumtreetechtest.ui.viewmodels.SearchScreenViewModel
 
 
 @Composable
-fun SearchScreen(
-    navController: NavController,
-    viewModel: SearchScreenViewModel
+fun InfoScreen(
+    navController: NavController?
 ) {
     Column(
         modifier = Modifier
             .fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
-    ) {
-        Column(
-            modifier = Modifier
-                .fillMaxSize(0.99f)
-                .padding(dimensionResource(id = R.dimen.standard_padding)),
-            verticalArrangement = Arrangement.Top,
-            horizontalAlignment = Alignment.End
-        )
+    )
         {
-            HeaderText(
-                text = "Search..."
-            )
+            HeaderText(text = "Info screen")
+            DescriptionText(text = "A screen with some extra information...")
+            Button(onClick = { /*TODO*/ }) {
+                navController?.popBackStack()
+            }
         }
-    }
 }
 
 
 @Preview(showBackground = true)
 @Composable
-fun DefaultPreview() {
+fun DefaultInfoScreenPreview() {
     GumTreeAppTheme {
-        //SearchScreen()
+        InfoScreen(null)
     }
 }
 
 @Preview(showBackground = true)
 @Composable
-fun DarkPreview() {
+fun DarkInfoScreenPreview() {
     GumTreeAppTheme {
-        //SearchScreen()
+        InfoScreen(null)
     }
 }

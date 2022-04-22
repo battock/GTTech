@@ -7,4 +7,10 @@
     <dimen name="standard_padding">8dp</dimen>
     <dimen name="small_padding">2dp</dimen>
 
+    <dimen name="standard_component_height">40dp</dimen>
+    <dimen name="standard_component_width">90dp</dimen>
+    <dimen name="standard_corner_radius">6dp</dimen>
+    <dimen name="standard_border_thickness">1dp</dimen>
+
+    standard_component_height
 </resources>

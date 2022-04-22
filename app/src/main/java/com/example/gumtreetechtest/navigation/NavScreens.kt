@@ -11,6 +11,7 @@ sealed class Screen(val route: String,
                     val icon: ImageVector = Icons.Default.Lock,
                     @StringRes val contentDescription: Int = 0) {
 
-    object SearchScreen : Screen("search", R.string.search)
-    object ResultsScreen : Screen("results", R.string.results)
+    object MainScreen : Screen("main", R.string.main_screen)
+    object InfoScreen : Screen("infoScreen", R.string.info_screen)
+
 }
