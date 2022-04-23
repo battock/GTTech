@@ -14,13 +14,13 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.ViewModel
 import androidx.navigation.NavController
 import com.example.gumtreetechtest.R
+import com.example.gumtreetechtest.ui.components.*
 import com.example.gumtreetechtest.ui.components.DescriptionText
-import com.example.gumtreetechtest.ui.components.HeaderText
-import com.example.gumtreetechtest.ui.components.ScrollingList
-import com.example.gumtreetechtest.ui.components.StandardButton
 import com.example.gumtreetechtest.ui.themes.GumTreeAppTheme
 import com.example.gumtreetechtest.ui.themes.Purple200
 import com.example.gumtreetechtest.ui.viewmodels.MainViewModel
+import com.example.gumtreetechtest.ui.viewmodels.Make
+import com.example.gumtreetechtest.ui.viewmodels.Model
 
 @Composable
 fun SearchSection(
@@ -40,19 +40,19 @@ fun SearchSection(
             modifier = Modifier
                 .wrapContentHeight()
                 .fillMaxWidth()
-                .padding(dimensionResource(id = R.dimen.large_padding)),
+                .padding(dimensionResource(id = R.dimen.standard_padding)),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         )
         {
 
-            HeaderText(text = "Search section....")
-            DescriptionText(text = "Search by make....")
-            DescriptionText(text = "Search by model....")
-            DescriptionText(text = "Search by year....")
+            HeaderText(text = "Motors.co.uk")
+            StandardDropDown("Make",{viewModel.setMake(Make.Ford)})
+            StandardDropDown("Model",{viewModel.setModel(Model.Focus)})
+            StandardDropDown("Year",{viewModel.setYear(2022)})
             StandardButton(modifier = Modifier
                 .fillMaxWidth(),
-                "Search...")
+                "Update results")
         }
     }
 }
