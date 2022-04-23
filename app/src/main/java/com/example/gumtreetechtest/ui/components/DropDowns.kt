@@ -11,7 +11,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import com.example.gumtreetechtest.R
 
 @Composable
@@ -35,7 +34,7 @@ fun StandardDropDown(
             onValueChange = { mSelectedText = it },
             modifier = Modifier
                 .fillMaxWidth(),
-            label = { DescriptionText("") },
+            label = { DescriptionText(label) },
             trailingIcon = {
                 icon?.let {
                     Icon(icon, "contentDescription",
@@ -50,11 +49,11 @@ fun StandardDropDown(
                 .fillMaxWidth()
                 .padding(vertical = dimensionResource(id = R.dimen.standard_padding))
         ) {
-            listItems.forEach { label ->
+            listItems.forEach { lbl ->
                 DropdownMenuItem(
                     onClick = {
-                        mSelectedText = label
-                        onClick(label)
+                        mSelectedText = lbl
+                        onClick(lbl)
                         mExpanded = false
                     },
                     modifier = Modifier
@@ -62,7 +61,7 @@ fun StandardDropDown(
                 )
 
                 {
-                    DescriptionText(text = label)
+                    DescriptionText(text = lbl)
                 }
             }
         }

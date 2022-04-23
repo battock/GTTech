@@ -47,9 +47,9 @@ fun SearchSection(
         {
 
             HeaderText(text = "Motors.co.uk")
-            StandardDropDown("Make",{viewModel.setMake(Make.Ford)})
-            StandardDropDown("Model",{viewModel.setModel(Model.Focus)})
-            StandardDropDown("Year",{viewModel.setYear(2022)})
+            StandardDropDown("Make",{viewModel.setMake(Make.Ford)}, listItems=viewModel.availableMakes.value.map { it.toString() })
+            StandardDropDown("Model",{viewModel.setModel(Model.Focus)}, listItems=viewModel.availableModels.value.map { it.toString() })
+            StandardDropDown("Year",{viewModel.setYear(2022)}, listItems=viewModel.availableYears.value.map { it.toString() })
             StandardButton(modifier = Modifier
                 .fillMaxWidth(),
                 "Update results")
