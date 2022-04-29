@@ -34,12 +34,8 @@ fun SearchTextField(
     label: String,
     onTxtChange: (selectedItem: String) -> Unit,
     viewModel: MainViewModel = hiltViewModel(),
-    listItems : LiveData<List<String>> = liveData { emptyList<String>() }
 ) {
     var mSelectedText by remember { mutableStateOf("") }
-    var mText by remember { mutableStateOf("") }
-    val listItems = listItems.observeAsState(initial = emptyList())
-    var visible by remember { mutableStateOf(true) }
 
     Column(
         Modifier
@@ -52,44 +48,12 @@ fun SearchTextField(
             singleLine = true,
             onValueChange = {
                 mSelectedText = it
-                visible = if(it.length>0){
-                    true
-                }
-                else{
-                    mText = ""
-                    mSelectedText = ""
-                    false
-                }
+                onTxtChange(it)
             },
             modifier = Modifier
                 .fillMaxWidth()
                 .wrapContentHeight(),
             label = { DescriptionText(label) })
-            LazyColumn(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .clickable {
-                        onTxtChange(mText)
-                        mSelectedText = mText
-                        visible = false
-                    }
-            ) {
-                if(visible) {
-                    val filteredListItems = if (mSelectedText.isEmpty()) {
-                        emptyList()
-                    } else {
-                        listItems.value.filter { it.startsWith(mSelectedText.replaceFirstChar {
-                            if (it.isLowerCase()) it.titlecase(
-                                Locale.getDefault()
-                            ) else it.toString()
-                        }) }
-                    }
-                    mText = filteredListItems.firstOrNull() ?: mSelectedText
-                    items(filteredListItems) {
-                        SearchListItem(text = it)
-                    }
-                }
-        }
 
     }
 }

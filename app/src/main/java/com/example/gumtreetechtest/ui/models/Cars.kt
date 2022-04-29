@@ -1,27 +1,13 @@
 package com.example.gumtreetechtest.ui.models
 
-
-enum class Make {
-    All,
-    Ford,
-    Renault,
-    Nissan
-}
-
-enum class Model {
-    Focus,
-    Ka,
-    Clio,
-    Captur,
-    Juke,
-    Fiesta,
-    Galaxy,
-    Kuga,
-    Twingo,
-    Megane
-}
+import androidx.compose.ui.graphics.vector.ImageVector
 
 data class Car(
-    val make:Make = Make.Ford,
-    val model:Model = Model.Focus
+    val make:String,
+    val model:String,
+    val name:String,
+    val title:String,
+    val year:String,
+    val price:String,
+    val image:ImageVector
 )

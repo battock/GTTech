@@ -1,14 +1,12 @@
 package com.example.gumtreetechtest.ui.viewmodels
 
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.*
 import com.example.gumtreetechtest.domain.CarsRepository
 import com.example.gumtreetechtest.ui.models.Car
-import com.example.gumtreetechtest.ui.models.Model
-import com.example.gumtreetechtest.utils.mockAvailableCars
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import java.util.*
 import javax.inject.Inject
 
 @HiltViewModel
@@ -18,59 +16,32 @@ class MainViewModel @Inject constructor(
 
     private val LOGGING_TAG by lazy { this.javaClass.simpleName }
 
-    /**
-     * For use in api call
-     */
-    private val _selectedYear: MutableLiveData<Int> = MutableLiveData(2022)
-    val year: LiveData<Int> = _selectedYear
+    var _selectedMake: MutableState<String> = mutableStateOf("")
+        private set
 
-    private val _selectedMake: MutableLiveData<String> = MutableLiveData("")
-    val make: LiveData<String> = _selectedMake
+    var _selectedModel: MutableState<String> = mutableStateOf("")
+        private set
 
-    private val _selectedModel: MutableLiveData<String> = MutableLiveData()
-    val model: LiveData<String> = _selectedModel
-
-    private val _availableCars: MutableLiveData<HashMap<String, List<Model>>> =
-        MutableLiveData(HashMap())
-
-    /**
-     * Below populate the drop down lists for search
-     */
-    val availableMakes:LiveData<List<String>> = _availableCars.map {
-            it.keys.toList()
-    }
-
-    var availableModels:LiveData<List<String>> =_selectedMake.map {
-        _availableCars.value?.getOrDefault(_selectedMake.value.toString(), emptyList())?.map { it.toString() }?: emptyList()
-    }
-
-    var availableYears: LiveData<List<String>> = liveData {  List(6) { i -> 2016 + i }.map { it.toString() } }
-
+    var _selectedYear: MutableState<Int> = mutableStateOf(2022)
+        private set
 
     var resultsData = mutableStateOf<List<Car>>(listOf())
         private set
 
     init {
-        //fake data to poppulate drop downs and search results
-        _availableCars.postValue(mockAvailableCars)
+
     }
 
     fun setMake(make: String) {
-        if(_availableCars.value!!.containsKey(make.replaceFirstChar {
-                if (it.isLowerCase()) it.titlecase(
-                    Locale.getDefault()
-                ) else it.toString()
-            })){
-            _selectedMake.postValue(make)
-        }
+        _selectedMake.value = make
     }
 
     fun setModel(model: String) {
-        _selectedModel.postValue(model)
+        _selectedModel.value = model
     }
 
     fun setYear(year: Int) {
-        _selectedYear.postValue(2022)
+        _selectedYear.value = year
     }
 
     fun upDateResults(){
@@ -79,8 +50,8 @@ class MainViewModel @Inject constructor(
         val make = _selectedMake.value?:""
 
         viewModelScope.launch {
-            val vl= carsRepository.fetchCars(make, model, year)
-            var t = vl
+            val result= carsRepository.fetchCars(make, model, year)
+            resultsData.value = result
         }
 
     }

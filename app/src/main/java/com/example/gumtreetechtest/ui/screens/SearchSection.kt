@@ -44,18 +44,14 @@ fun SearchSection(
             SearchTextField(
                 "Make",
                 onTxtChange = { viewModel.setMake(it) },
-                listItems = viewModel.availableMakes
             )
             SearchTextField(
                 "Model",
                 onTxtChange = { viewModel.setModel(it) },
-                listItems = viewModel.availableModels
-
             )
             SearchTextField(
                 "Year",
                 onTxtChange = { viewModel.setYear(2022) },
-                listItems = viewModel.availableYears
 
             )
             StandardButton(
