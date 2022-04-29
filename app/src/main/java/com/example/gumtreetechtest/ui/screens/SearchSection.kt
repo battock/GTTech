@@ -62,7 +62,8 @@ fun SearchSection(
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(200.dp),
-                "Update results"
+                "Update results",
+                onClick = {viewModel.upDateResults()}
             )
         }
     }

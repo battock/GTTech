@@ -1,17 +1,9 @@
 package com.example.gumtreetechtest.ui.viewmodels
 
-
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.setValue
-import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.key
-import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.ui.text.capitalize
-import androidx.compose.ui.text.toLowerCase
 import androidx.lifecycle.*
+import com.example.gumtreetechtest.domain.CarsRepository
 import com.example.gumtreetechtest.ui.models.Car
-import com.example.gumtreetechtest.ui.models.Make
 import com.example.gumtreetechtest.ui.models.Model
 import com.example.gumtreetechtest.utils.mockAvailableCars
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -19,7 +11,9 @@ import java.util.*
 import javax.inject.Inject
 
 @HiltViewModel
-class MainViewModel @Inject constructor() : ViewModel() {
+class MainViewModel @Inject constructor(
+    val carsRepository: CarsRepository
+) : ViewModel() {
 
     private val LOGGING_TAG by lazy { this.javaClass.simpleName }
 
@@ -76,6 +70,15 @@ class MainViewModel @Inject constructor() : ViewModel() {
 
     fun setYear(year: Int) {
         _selectedYear.postValue(2022)
+    }
+
+    fun upDateResults(){
+        val year = _selectedYear.value?:2022
+        val model = _selectedModel.value?:""
+        val make = _selectedMake.value?:""
+
+        carsRepository.fetchCars(make,model,year)
+
     }
 }
 
