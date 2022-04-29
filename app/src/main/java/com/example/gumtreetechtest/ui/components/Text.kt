@@ -5,17 +5,17 @@ import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.sp
 import com.example.gumtreetechtest.R
-import java.lang.reflect.Modifier
 
 
 @Composable
 fun HeaderText(
     text: String,
     @StringRes txtRes: Int = R.string.app_name,
-    modifier: Modifier = Modifier()
+    modifier: Modifier = Modifier
 ) {
     Text(
         modifier = androidx.compose.ui.Modifier.wrapContentSize(),
@@ -28,7 +28,7 @@ fun HeaderText(
 fun SubHeaderText(
     text: String,
     @StringRes txtRes: Int = R.string.app_name,
-    modifier: Modifier = Modifier(),
+    modifier: Modifier = Modifier,
 ) {
     Text(
         modifier = androidx.compose.ui.Modifier.wrapContentSize(),
@@ -42,7 +42,7 @@ fun SubHeaderText(
 fun DescriptionText(
     text: String,
     @StringRes txtRes: Int = R.string.app_name,
-    modifier: Modifier = Modifier()
+    modifier: Modifier = Modifier
 ) {
     Text(
         modifier = androidx.compose.ui.Modifier.wrapContentSize(),
@@ -54,7 +54,7 @@ fun DescriptionText(
 
 @Composable
 fun SmallDescriptionText(
-    modifier: Modifier = Modifier(),
+    modifier: Modifier = Modifier,
     text: String,
     @StringRes txtRes: Int = R.string.app_name
 ) {
