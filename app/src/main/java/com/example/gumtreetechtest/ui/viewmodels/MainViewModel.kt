@@ -7,6 +7,7 @@ import com.example.gumtreetechtest.ui.models.Car
 import com.example.gumtreetechtest.ui.models.Model
 import com.example.gumtreetechtest.utils.mockAvailableCars
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
 import java.util.*
 import javax.inject.Inject
 
@@ -77,7 +78,10 @@ class MainViewModel @Inject constructor(
         val model = _selectedModel.value?:""
         val make = _selectedMake.value?:""
 
-        carsRepository.fetchCars(make,model,year)
+        viewModelScope.launch {
+            val vl= carsRepository.fetchCars(make, model, year)
+            var t = vl
+        }
 
     }
 }
