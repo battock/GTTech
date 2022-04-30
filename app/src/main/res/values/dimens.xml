@@ -8,7 +8,7 @@
     <dimen name="small_padding">2dp</dimen>
 
     <dimen name="standard_component_height">40dp</dimen>
-    <dimen name="large_component_height">100dp</dimen>
+    <dimen name="large_component_height">120dp</dimen>
     <dimen name="standard_component_width">90dp</dimen>
     <dimen name="standard_corner_radius">6dp</dimen>
     <dimen name="standard_border_thickness">1dp</dimen>

@@ -14,13 +14,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.example.gumtreetechtest.R
 import com.example.gumtreetechtest.ui.models.Car
 import com.example.gumtreetechtest.ui.themes.card
 
 @Composable
-fun ScrollingList(items: List<Car>) {
+fun ScrollingList(items: List<Car>) = if (items.size > 0) {
     LazyColumn(
         verticalArrangement = Arrangement.spacedBy(
             4.dp,
@@ -32,6 +33,17 @@ fun ScrollingList(items: List<Car>) {
         items(items) { item ->
             CarListItem(item)
         }
+    }
+} else {
+    Column(
+        Modifier
+            .fillMaxSize()
+            .padding(dimensionResource(id = R.dimen.medium_padding)
+            ),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        DescriptionText(text = stringResource(R.string.no_data_message))
     }
 }
 
@@ -50,15 +62,20 @@ fun CarListItem(car: Car) {
             )
             .fillMaxWidth()
             .height(dimensionResource(id = R.dimen.large_component_height)),
-        horizontalArrangement = Arrangement.spacedBy(10.dp),
-        verticalAlignment = Alignment.CenterVertically
     ) {
-        SubHeaderText(
-            text = car.title
-        )
-        SubHeaderText(
-            text = car.price
-        )
+        Column {
+            HeaderText(
+                text = car.title
+            )
+            Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.small_padding)))
+            SubHeaderText(
+                text = car.price
+            )
+            Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.small_padding)))
+            DescriptionText(
+                text = "${car.make}   ${car.model}   ${car.year} "
+            )
+        }
     }
 
 }

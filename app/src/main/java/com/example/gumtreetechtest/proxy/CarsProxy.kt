@@ -13,7 +13,7 @@ import javax.inject.Inject
 class CarsProxy @Inject constructor(
     val api: CarsApi
 ){
-    suspend fun fetchCars(make:String,model:String,year:Int): List<Car> {
+    suspend fun fetchCars(make:String,model:String,year:String): List<Car> {
         return api.fetchCars(make,model,year).searchResults.map {
             Car(
                 make = it.make,

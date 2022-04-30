@@ -22,7 +22,7 @@ class MainViewModel @Inject constructor(
     var _selectedModel: MutableState<String> = mutableStateOf("")
         private set
 
-    var _selectedYear: MutableState<Int> = mutableStateOf(2022)
+    var _selectedYear: MutableState<String> = mutableStateOf("")
         private set
 
     var resultsData = mutableStateOf<List<Car>>(listOf())
@@ -40,18 +40,23 @@ class MainViewModel @Inject constructor(
         _selectedModel.value = model
     }
 
-    fun setYear(year: Int) {
+    fun setYear(year: String) {
         _selectedYear.value = year
     }
 
-    fun upDateResults(){
-        val year = _selectedYear.value?:2022
-        val model = _selectedModel.value?:""
-        val make = _selectedMake.value?:""
+    fun upDateResults() {
+        val year = _selectedYear.value ?: ""
+        val model = _selectedModel.value ?: ""
+        val make = _selectedMake.value ?: ""
 
-        viewModelScope.launch {
-            val result= carsRepository.fetchCars(make, model, year)
-            resultsData.value = result
+        if (make.length > 0 && model.length > 0 && year.length > 0) {
+            viewModelScope.launch {
+                val result = carsRepository.fetchCars(make, model, year)
+                resultsData.value = result
+            }
+        }
+        else{
+            resultsData.value = emptyList()
         }
 
     }

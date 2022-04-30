@@ -7,7 +7,7 @@ import javax.inject.Inject
 class CarsRepository @Inject constructor(
     val proxy: CarsProxy
 ){
-    suspend fun fetchCars(make:String,model:String,year:Int):List<Car>{
+    suspend fun fetchCars(make:String,model:String,year:String):List<Car>{
         return proxy.fetchCars(make,model,year)
     }
 

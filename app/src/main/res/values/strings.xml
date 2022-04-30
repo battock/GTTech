@@ -13,5 +13,6 @@
         *  Drop down in the year box to show all available years. I would thnk in a proper app this information would be provided through an api on start up of the search screen to show all available options.
         \n\n\n\n
     </string>
+    <string name="no_data_message">No cars match current search criteria</string>
 
 </resources>

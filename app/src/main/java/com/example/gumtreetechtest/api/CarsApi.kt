@@ -10,7 +10,8 @@ interface CarsApi {
 
     @GET("search?")
     suspend fun fetchCars(
-        @Query("make") make:String = "Ford",
-        @Query("model") model:String = "Fiesta",
-        @Query("year") year:Int = 2020): ApiResults
+        @Query("make") make:String,
+        @Query("model") model:String,
+        @Query("year") year:String
+    ): ApiResults
 }

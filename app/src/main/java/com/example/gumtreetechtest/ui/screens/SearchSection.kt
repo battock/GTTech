@@ -54,7 +54,6 @@ fun SearchSection(
             SearchTextField(
                 "Year",
                 onTxtChange = { viewModel.setYear(it.validate()) },
-
             )
             StandardButton(
                 modifier = Modifier
@@ -68,13 +67,18 @@ fun SearchSection(
 }
 
 /*
-Just a basic try catch but in a real application this would be more complex
+Just a basic try catch but in a real application this would be more considered
  */
-private fun String.validate(): Int {
-    return try{
-        this.toInt()
+private fun String.validate(): String {
+    var isValid = true
+    try{
+        if(this.length!=4){ isValid = false}
+        val intVal = this.toInt()
+        if(intVal<1900||intVal>2022){isValid = false}
     }
     catch(ex:NumberFormatException){
-        2022
+        error("year format invalid failed with ex $ex")
+        isValid = false
     }
+    return if(isValid) {this} else {""}
 }
