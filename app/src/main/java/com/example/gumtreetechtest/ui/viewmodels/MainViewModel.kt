@@ -45,9 +45,9 @@ class MainViewModel @Inject constructor(
     }
 
     fun upDateResults() {
-        val year = _selectedYear.value ?: ""
-        val model = _selectedModel.value ?: ""
-        val make = _selectedMake.value ?: ""
+        val year = _selectedYear.value
+        val model = _selectedModel.value
+        val make = _selectedMake.value
 
         if (make.length > 0 && model.length > 0 && year.length > 0) {
             viewModelScope.launch {

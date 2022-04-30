@@ -1,10 +1,10 @@
 package com.example.gumtreetechtest.ui.screens
 
 
+import android.util.Log
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -14,10 +14,10 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.gumtreetechtest.R
 import com.example.gumtreetechtest.ui.components.*
-import com.example.gumtreetechtest.ui.themes.Purple200
 import com.example.gumtreetechtest.ui.viewmodels.MainViewModel
-import java.lang.Exception
 import java.lang.NumberFormatException
+
+const val SEARCH_SECTION_LOGGING_TAG  = "Search Section screen"
 
 @Composable
 fun SearchSection(
@@ -60,7 +60,9 @@ fun SearchSection(
                     .fillMaxWidth()
                     .height(200.dp),
                 "Update results",
-                onClick = {viewModel.upDateResults()}
+                onClick = {
+                    viewModel.upDateResults()
+                }
             )
         }
     }
@@ -77,7 +79,7 @@ private fun String.validate(): String {
         if(intVal<1900||intVal>2022){isValid = false}
     }
     catch(ex:NumberFormatException){
-        error("year format invalid failed with ex $ex")
+        Log.e(SEARCH_SECTION_LOGGING_TAG,"year format invalid failed with ex $ex")
         isValid = false
     }
     return if(isValid) {this} else {""}
