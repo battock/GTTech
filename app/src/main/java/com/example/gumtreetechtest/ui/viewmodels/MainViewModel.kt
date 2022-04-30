@@ -19,6 +19,7 @@ class MainViewModel @Inject constructor(
 ) : ViewModel() {
 
     private val LOGGING_TAG by lazy { this.javaClass.simpleName }
+
     var apiState: MutableState<ApiState> = mutableStateOf(ApiState.LOADING)
         private set
 

@@ -11,6 +11,8 @@
         *  I would have had drop downs for each make and model box on the search screen to show possible makes and also associated models.
         \n\n
         *  Drop down in the year box to show all available years. I would thnk in a proper app this information would be provided through an api on start up of the search screen to show all available options.
+        \n\n
+        *  I added a sealed class to track the network response. I havent added a loading enum or a progress spinner for this MVP but the sealed class allows for that sort of thing to be added quite easily. I only added error and success scenarios to show how it would be handled.
         \n\n\n\n
     </string>
     <string name="no_data_message">No cars match current search criteria</string>

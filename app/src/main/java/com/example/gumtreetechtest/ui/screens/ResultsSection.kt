@@ -4,6 +4,7 @@ package com.example.gumtreetechtest.ui.screens
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.res.dimensionResource
@@ -39,7 +40,10 @@ fun ResultsSection(
                 Column(
                     Modifier
                         .fillMaxSize()
-                        .padding(dimensionResource(id = R.dimen.medium_padding))
+                        .padding(dimensionResource(id = R.dimen.medium_padding)
+                        ),
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.Center
                 ) {
                     DescriptionText(text = "Error fetching results")
                 }

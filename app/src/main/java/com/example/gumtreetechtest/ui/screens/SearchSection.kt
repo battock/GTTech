@@ -46,17 +46,17 @@ fun SearchSection(
             SearchTextField(
                 "Make",
                 onTxtChange = { viewModel.setMake(it) },
-                errorMessage = viewModel.selectedMake.value.errorText,
+                selectedItem = viewModel.selectedMake
             )
             SearchTextField(
                 "Model",
                 onTxtChange = { viewModel.setModel(it) },
-                errorMessage = viewModel.selectedModel.value.errorText,
+                selectedItem = viewModel.selectedModel,
             )
             SearchTextField(
                 "Year",
                 onTxtChange = { viewModel.setYear(it) },
-                errorMessage = viewModel.selectedYear.value.errorText,
+                selectedItem = viewModel.selectedYear,
             )
             StandardButton(
                 modifier = Modifier
