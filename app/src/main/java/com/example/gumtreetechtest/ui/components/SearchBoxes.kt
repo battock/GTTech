@@ -53,7 +53,7 @@ fun SearchTextField(
                     unfocusedBorderColor = Color.White,
                     focusedLabelColor = MaterialTheme.colors.primary,
                     unfocusedLabelColor = Color.White,
-                    textColor = MaterialTheme.colors.primary,
+                    textColor = Color.White,
                     disabledLabelColor = Color.White,
                     errorLabelColor = Color.Red
                 ),

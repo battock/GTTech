@@ -1,5 +1,6 @@
 package com.example.gumtreetechtest.ui.viewmodels
 
+import androidx.annotation.VisibleForTesting
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.*
@@ -72,6 +73,7 @@ class MainViewModel @Inject constructor(
 
     }
 
+    @VisibleForTesting
     private fun validateInputs(): Boolean =
         validateMake() && validateModel() && validateYear()
 
