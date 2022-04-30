@@ -38,9 +38,8 @@ fun SubHeaderText(
         fontSize = 22.sp
     )
 }
-
 @Composable
-fun DescriptionText(
+fun ErrorText(
     text: String,
     @StringRes txtRes: Int = R.string.app_name,
     modifier: Modifier = Modifier.wrapContentSize()
@@ -48,7 +47,21 @@ fun DescriptionText(
     Text(
         modifier =Modifier.wrapContentSize(),
         text = text,
-        color = Color.White,
+        color = Color.Red,
+        style = MaterialTheme.typography.body2
+    )
+}
+@Composable
+fun DescriptionText(
+    text: String,
+    @StringRes txtRes: Int = R.string.app_name,
+    modifier: Modifier = Modifier.wrapContentSize(),
+    color:Color = Color.White
+) {
+    Text(
+        modifier =Modifier.wrapContentSize(),
+        text = text,
+        color = color,
         style = MaterialTheme.typography.body1
     )
 }

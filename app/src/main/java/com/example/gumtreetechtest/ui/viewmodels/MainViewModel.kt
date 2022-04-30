@@ -31,29 +31,16 @@ class MainViewModel @Inject constructor(
     var resultsData = mutableStateOf<List<Car>>(listOf())
         private set
 
-    init {
-
-    }
-
     fun setMake(make: String) {
         selectedMake.value = SearchInput(data = make)
-        if(!inputValidation.validate(make,ValidationType.MAKE)){
-            selectedMake.value = SearchInput(errorText = "invalid make entered")
-        }
     }
 
     fun setModel(model: String) {
         selectedModel.value = SearchInput(data = model)
-        if(!inputValidation.validate(input = model,ValidationType.MODEL)){
-            selectedModel.value = SearchInput(errorText = "invalid model type entered")
-        }
     }
 
     fun setYear(year: String) {
         selectedYear.value = SearchInput(data = year)
-        if(!inputValidation.validate(year,ValidationType.YEAR)){
-             selectedYear.value = SearchInput(errorText = "invalid year entered")
-         }
     }
 
     fun upDateResults() {
@@ -61,20 +48,56 @@ class MainViewModel @Inject constructor(
         val model = selectedModel.value.data
         val make = selectedMake.value.data
 
-        if (inputValidation.allInputsValid) {
+        if (validateInputs()) {
             viewModelScope.launch {
                 val result = carsRepository.fetchCars(make, model, year)
                 resultsData.value = result
             }
-        }
-        else{
+        } else {
             resultsData.value = emptyList()
         }
 
     }
+
+    private fun validateInputs(): Boolean =
+        validateMake() && validateYear() && validateModel()
+
+
+    /*
+    Validate make
+     */
+    private fun validateMake(): Boolean {
+        if (!inputValidation.validate(selectedMake.value.data, ValidationType.MAKE)) {
+            selectedMake.value = SearchInput(errorText = "input must be valid make")
+            return false
+        }
+        return true
+    }
+
+    /*
+     Validate year
+    */
+    private fun validateYear(): Boolean {
+        if (!inputValidation.validate(selectedYear.value.data, ValidationType.YEAR)) {
+            selectedYear.value = SearchInput(errorText = "input must be valid year")
+            return false
+        }
+        return true
+    }
+
+    /*
+    Validate model
+    */
+    private fun validateModel(): Boolean {
+        if (!inputValidation.validate(selectedModel.value.data, ValidationType.MODEL)) {
+            selectedModel.value = SearchInput(errorText = "input must be valid model")
+            return false
+        }
+        return true
+    }
 }
 
 data class SearchInput(
-    val data:String = "",
-    val errorText:String? = null
+    val data: String = "",
+    val errorText: String? = null
 )

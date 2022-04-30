@@ -16,6 +16,7 @@ import androidx.compose.runtime.*
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.onFocusEvent
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.text.capitalize
@@ -33,10 +34,12 @@ import java.util.*
 fun SearchTextField(
     label: String,
     onTxtChange: (selectedItem: String) -> Unit,
-    viewModel: MainViewModel = hiltViewModel(),
-    errorMessage:String? = null
+    errorMessage: String? = null
 ) {
     var mSelectedText by remember { mutableStateOf("") }
+    var mIsError by remember { mutableStateOf(false) }
+
+    mIsError = errorMessage?.let {true } ?: false
 
     Column(
         Modifier
@@ -44,21 +47,29 @@ fun SearchTextField(
             .padding(vertical = dimensionResource(id = R.dimen.standard_padding)),
         verticalArrangement = Arrangement.SpaceAround
     ) {
-        OutlinedTextField(
-            value = mSelectedText,
-            singleLine = true,
-            onValueChange = {
-                mSelectedText = it
-                onTxtChange(it)
-            },
-            modifier = Modifier
-                .fillMaxWidth()
-                .wrapContentHeight(),
-            label = { DescriptionText(label) })
-
+        Column {
+            OutlinedTextField(
+                isError = mIsError,
+                value = mSelectedText,
+                singleLine = true,
+                onValueChange = {
+                    mSelectedText = it
+                    onTxtChange(it)
+                },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .wrapContentHeight(),
+                label = {
+                    val color = if(mIsError){Color.Red} else {Color.White}
+                    DescriptionText(label,color = color)
+                }
+            )
+            if (mIsError) {
+                ErrorText(text = errorMessage!!)
+            }
+        }
     }
 }
-
 
 
 @Preview
