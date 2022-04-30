@@ -1,5 +1,8 @@
 package com.example.gumtreetechtest.ui.components
 
+import androidx.compose.animation.animateContentSize
+import androidx.compose.animation.core.TweenSpec
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -11,6 +14,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.dimensionResource
@@ -38,8 +42,9 @@ fun ScrollingList(items: List<Car>) = if (items.size > 0) {
     Column(
         Modifier
             .fillMaxSize()
-            .padding(dimensionResource(id = R.dimen.medium_padding)
-            ),
+            .padding(dimensionResource(id = R.dimen.medium_padding))
+            .animateContentSize(tween(200) )
+        ,
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
@@ -48,15 +53,11 @@ fun ScrollingList(items: List<Car>) = if (items.size > 0) {
 }
 
 @Composable
-fun CarListItem(car: Car) {
+fun CarListItem(car: Car,
+                modifier: Modifier = Modifier) {
     Row(
         modifier = Modifier
-            .background(Color.LightGray)
-            .border(
-                dimensionResource(id = R.dimen.standard_border_thickness),
-                card,
-                RoundedCornerShape(6.dp)
-            )
+            .background(Color.Gray)
             .padding(
                 horizontal = dimensionResource(id = R.dimen.medium_padding)
             )

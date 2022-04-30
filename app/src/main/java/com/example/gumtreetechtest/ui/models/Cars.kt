@@ -8,6 +8,5 @@ data class Car(
     val name:String = "Generic car v1",
     val title:String,
     val year:String,
-    val price:String,
-    val image:ImageVector
+    val price:String
 )

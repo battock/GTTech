@@ -3,6 +3,7 @@ package com.example.gumtreetechtest.ui.viewmodels
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.*
+import com.example.gumtreetechtest.network.Result
 import com.example.gumtreetechtest.domain.CarsRepository
 import com.example.gumtreetechtest.ui.InputValidation
 import com.example.gumtreetechtest.ui.ValidationType
@@ -18,6 +19,8 @@ class MainViewModel @Inject constructor(
 ) : ViewModel() {
 
     private val LOGGING_TAG by lazy { this.javaClass.simpleName }
+    var apiState: MutableState<ApiState> = mutableStateOf(ApiState.LOADING)
+        private set
 
     var selectedMake: MutableState<SearchInput> = mutableStateOf(SearchInput())
         private set
@@ -51,7 +54,16 @@ class MainViewModel @Inject constructor(
         if (validateInputs()) {
             viewModelScope.launch {
                 val result = carsRepository.fetchCars(make, model, year)
-                resultsData.value = result
+                resultsData.value = when(result){
+                    is Result.Error->{
+                        apiState.value = ApiState.ERROR
+                        emptyList()
+                    }
+                    is Result.Success ->{
+                        apiState.value = ApiState.SUCCESS
+                        result.data
+                    }
+                }
             }
         } else {
             resultsData.value = emptyList()
@@ -60,7 +72,7 @@ class MainViewModel @Inject constructor(
     }
 
     private fun validateInputs(): Boolean =
-        validateMake() && validateYear() && validateModel()
+        validateMake() && validateModel() && validateYear()
 
 
     /*
