@@ -34,6 +34,7 @@ fun SearchTextField(
     label: String,
     onTxtChange: (selectedItem: String) -> Unit,
     viewModel: MainViewModel = hiltViewModel(),
+    errorMessage:String? = null
 ) {
     var mSelectedText by remember { mutableStateOf("") }
 

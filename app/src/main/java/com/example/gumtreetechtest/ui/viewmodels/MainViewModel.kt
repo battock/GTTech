@@ -4,6 +4,8 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.*
 import com.example.gumtreetechtest.domain.CarsRepository
+import com.example.gumtreetechtest.ui.InputValidation
+import com.example.gumtreetechtest.ui.ValidationType
 import com.example.gumtreetechtest.ui.models.Car
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -11,18 +13,19 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
-    val carsRepository: CarsRepository
+    val carsRepository: CarsRepository,
+    val inputValidation: InputValidation
 ) : ViewModel() {
 
     private val LOGGING_TAG by lazy { this.javaClass.simpleName }
 
-    var _selectedMake: MutableState<String> = mutableStateOf("")
+    var selectedMake: MutableState<SearchInput> = mutableStateOf(SearchInput())
         private set
 
-    var _selectedModel: MutableState<String> = mutableStateOf("")
+    var selectedModel: MutableState<SearchInput> = mutableStateOf(SearchInput())
         private set
 
-    var _selectedYear: MutableState<String> = mutableStateOf("")
+    var selectedYear: MutableState<SearchInput> = mutableStateOf(SearchInput())
         private set
 
     var resultsData = mutableStateOf<List<Car>>(listOf())
@@ -33,23 +36,32 @@ class MainViewModel @Inject constructor(
     }
 
     fun setMake(make: String) {
-        _selectedMake.value = make
+        selectedMake.value = SearchInput(data = make)
+        if(!inputValidation.validate(make,ValidationType.MAKE)){
+            selectedMake.value = SearchInput(errorText = "invalid make entered")
+        }
     }
 
     fun setModel(model: String) {
-        _selectedModel.value = model
+        selectedModel.value = SearchInput(data = model)
+        if(!inputValidation.validate(input = model,ValidationType.MODEL)){
+            selectedModel.value = SearchInput(errorText = "invalid model type entered")
+        }
     }
 
     fun setYear(year: String) {
-        _selectedYear.value = year
+        selectedYear.value = SearchInput(data = year)
+        if(!inputValidation.validate(year,ValidationType.YEAR)){
+             selectedYear.value = SearchInput(errorText = "invalid year entered")
+         }
     }
 
     fun upDateResults() {
-        val year = _selectedYear.value
-        val model = _selectedModel.value
-        val make = _selectedMake.value
+        val year = selectedYear.value.data
+        val model = selectedModel.value.data
+        val make = selectedMake.value.data
 
-        if (make.length > 0 && model.length > 0 && year.length > 0) {
+        if (inputValidation.allInputsValid) {
             viewModelScope.launch {
                 val result = carsRepository.fetchCars(make, model, year)
                 resultsData.value = result
@@ -62,3 +74,7 @@ class MainViewModel @Inject constructor(
     }
 }
 
+data class SearchInput(
+    val data:String = "",
+    val errorText:String? = null
+)

@@ -17,7 +17,7 @@ import com.example.gumtreetechtest.ui.components.*
 import com.example.gumtreetechtest.ui.viewmodels.MainViewModel
 import java.lang.NumberFormatException
 
-const val SEARCH_SECTION_LOGGING_TAG  = "Search Section screen"
+const val SEARCH_SECTION_LOGGING_TAG = "Search Section screen"
 
 @Composable
 fun SearchSection(
@@ -46,14 +46,17 @@ fun SearchSection(
             SearchTextField(
                 "Make",
                 onTxtChange = { viewModel.setMake(it) },
+                errorMessage = "",
             )
             SearchTextField(
                 "Model",
                 onTxtChange = { viewModel.setModel(it) },
+                errorMessage = "",
             )
             SearchTextField(
                 "Year",
-                onTxtChange = { viewModel.setYear(it.validate()) },
+                onTxtChange = { viewModel.setYear(it) },
+                errorMessage = "",
             )
             StandardButton(
                 modifier = Modifier
@@ -68,19 +71,4 @@ fun SearchSection(
     }
 }
 
-/*
-Just a basic try catch but in a real application this would be more considered
- */
-private fun String.validate(): String {
-    var isValid = true
-    try{
-        if(this.length!=4){ isValid = false}
-        val intVal = this.toInt()
-        if(intVal<1900||intVal>2022){isValid = false}
-    }
-    catch(ex:NumberFormatException){
-        Log.e(SEARCH_SECTION_LOGGING_TAG,"year format invalid failed with ex $ex")
-        isValid = false
-    }
-    return if(isValid) {this} else {""}
-}
+
