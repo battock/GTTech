@@ -27,10 +27,7 @@ fun ResultsSection(
     Box(modifier = modifier
         .wrapContentHeight()
         .fillMaxWidth()
-        .border(2.dp,
-            color = Purple200,
-            RectangleShape
-        )
+        .padding(horizontal = dimensionResource(id = R.dimen.standard_padding))
     ) {
         ScrollingList(results)
     }

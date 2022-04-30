@@ -7,6 +7,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.unit.dp
@@ -15,6 +16,8 @@ import com.example.gumtreetechtest.R
 import com.example.gumtreetechtest.ui.components.*
 import com.example.gumtreetechtest.ui.themes.Purple200
 import com.example.gumtreetechtest.ui.viewmodels.MainViewModel
+import java.lang.Exception
+import java.lang.NumberFormatException
 
 @Composable
 fun SearchSection(
@@ -24,10 +27,9 @@ fun SearchSection(
     Box(
         modifier = modifier
             .wrapContentSize()
-
             .border(
                 2.dp,
-                color = Purple200,
+                color = Color.LightGray,
                 RectangleShape
             )
     ) {
@@ -51,7 +53,7 @@ fun SearchSection(
             )
             SearchTextField(
                 "Year",
-                onTxtChange = { viewModel.setYear(2022) },
+                onTxtChange = { viewModel.setYear(it.validate()) },
 
             )
             StandardButton(
@@ -62,5 +64,17 @@ fun SearchSection(
                 onClick = {viewModel.upDateResults()}
             )
         }
+    }
+}
+
+/*
+Just a basic try catch but in a real application this would be more complex
+ */
+private fun String.validate(): Int {
+    return try{
+        this.toInt()
+    }
+    catch(ex:NumberFormatException){
+        2022
     }
 }

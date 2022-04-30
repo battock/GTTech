@@ -15,19 +15,6 @@ import com.example.gumtreetechtest.R
 fun HeaderText(
     text: String,
     @StringRes txtRes: Int = R.string.app_name,
-    modifier: Modifier = Modifier
-) {
-    Text(
-        modifier = androidx.compose.ui.Modifier.wrapContentSize(),
-        text = text,
-        fontSize = 18.sp
-    )
-}
-
-@Composable
-fun SubHeaderText(
-    text: String,
-    @StringRes txtRes: Int = R.string.app_name,
     modifier: Modifier = Modifier,
 ) {
     Text(
@@ -37,15 +24,29 @@ fun SubHeaderText(
         style = MaterialTheme.typography.h5
     )
 }
+@Composable
+fun SubHeaderText(
+    text: String,
+    @StringRes txtRes: Int = R.string.app_name,
+    modifier: Modifier = Modifier,
+) {
+    Text(
+        modifier = Modifier.wrapContentSize(),
+        text = text,
+        color = Color.White,
+        style = MaterialTheme.typography.h6,
+        fontSize = 22.sp
+    )
+}
 
 @Composable
 fun DescriptionText(
     text: String,
     @StringRes txtRes: Int = R.string.app_name,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier.wrapContentSize()
 ) {
     Text(
-        modifier = androidx.compose.ui.Modifier.wrapContentSize(),
+        modifier =Modifier.wrapContentSize(),
         text = text,
         color = Color.White,
         style = MaterialTheme.typography.body1

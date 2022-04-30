@@ -1,6 +1,17 @@
 <resources>
     <string name="app_name">GumTreeTechTest</string>
-    <string name="main_screen">main_screen</string>
-    <string name="info_screen">info_screen</string>
+    <string name="main_screen">Search</string>
+    <string name="info_screen">Info</string>
+    <string name="info_screen_description">
+        \n
+        I just wanted to write a second screen to show navigation and in place of a Read.me file.
+        There are a few things I didt implement in this app due to time constraints that I would have in a full production app.
+        Here are the improvements I would make if i had more time…
+        \n\n\n
+        *  I would have had drop downs for each make and model box on the search screen to show possible makes and also associated models.
+        \n\n
+        *  Drop down in the year box to show all available years. I would thnk in a proper app this information would be provided through an api on start up of the search screen to show all available options.
+        \n\n\n\n
+    </string>
 
 </resources>
