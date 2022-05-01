@@ -11,6 +11,7 @@ import com.example.gumtreetechtest.ui.InputValidator
 import com.example.gumtreetechtest.ui.ValidationType
 import com.example.gumtreetechtest.ui.models.Car
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -55,7 +56,7 @@ class MainViewModel @Inject constructor(
         val make = selectedMake.value.data
 
         if (validateInputs()) {
-            viewModelScope.launch {
+            viewModelScope.launch(Dispatchers.IO) {
                 val result = carsRepository.fetchCars(make, model, year)
                 resultsData.value = when(result){
                     is Result.Error->{

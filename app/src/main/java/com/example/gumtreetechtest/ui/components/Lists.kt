@@ -48,8 +48,10 @@ fun ScrollingList(items: List<Car>) = if (items.size > 0) {
 }
 
 @Composable
-fun CarListItem(car: Car,
-     modifier: Modifier = Modifier) {
+fun CarListItem(
+    car: Car,
+    modifier: Modifier = Modifier
+) {
     Card(
         shape = RoundedCornerShape(dimensionResource(id = R.dimen.standard_corner_radius)),
         backgroundColor = MaterialTheme.colors.surface,
@@ -62,7 +64,7 @@ fun CarListItem(car: Car,
                 .padding(
                     horizontal = dimensionResource(id = R.dimen.medium_padding),
                     vertical = dimensionResource(id = R.dimen.small_padding)
-            )
+                )
         ) {
             Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.small_padding)))
 
