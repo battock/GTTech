@@ -1,6 +1,7 @@
 package com.example.gumtreetechtest.ui.screens
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -26,7 +27,7 @@ fun InfoScreen(
     )
         {
             HeaderText(text = "Info screen")
-            DescriptionText(text = stringResource(R.string.info_screen_description))
+            DescriptionText(text = stringResource(R.string.info_screen_description), color = MaterialTheme.colors.surface)
         }
 }
 

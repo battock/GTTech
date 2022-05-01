@@ -35,13 +35,13 @@ fun SearchTextField(
         Column {
             OutlinedTextField(
                 colors = TextFieldDefaults.outlinedTextFieldColors(
-                    focusedBorderColor =MaterialTheme.colors.primary,
-                    unfocusedBorderColor = Color.White,
-                    focusedLabelColor = MaterialTheme.colors.primary,
-                    unfocusedLabelColor = Color.White,
-                    textColor = Color.White,
-                    disabledLabelColor = Color.White,
-                    errorLabelColor = Color.Red
+                    focusedBorderColor =MaterialTheme.colors.primaryVariant,
+                    unfocusedBorderColor = MaterialTheme.colors.surface,
+                    focusedLabelColor = MaterialTheme.colors.primaryVariant,
+                    unfocusedLabelColor = MaterialTheme.colors.surface,
+                    textColor = MaterialTheme.colors.surface,
+                    disabledLabelColor =MaterialTheme.colors.background,
+                    errorLabelColor = MaterialTheme.colors.error
                 ),
                 isError = mIsError,
                 value = mSelectedText,
@@ -54,7 +54,7 @@ fun SearchTextField(
                     .fillMaxWidth()
                     .wrapContentHeight(),
                 label = {
-                    val color = if(mIsError){Color.Red} else {Color.White}
+                    val color = if(mIsError){MaterialTheme.colors.error} else {MaterialTheme.colors.surface}
                     DescriptionText(label,color = color)
                 }
             )

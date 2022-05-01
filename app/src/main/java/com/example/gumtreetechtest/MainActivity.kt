@@ -49,7 +49,7 @@ class MainActivity : ComponentActivity() {
                                     icon = {
                                         Icon(
                                             screen.icon,
-                                            contentDescription = ""// todo stringResource(id = screen.contentDescription)
+                                            contentDescription = stringResource(id = R.string.app_name)
                                         )
                                     },
                                     label = { Text(stringResource(screen.resourceId)) },

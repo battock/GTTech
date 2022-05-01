@@ -15,11 +15,12 @@ fun HeaderText(
     text: String,
     @StringRes txtRes: Int = R.string.app_name,
     modifier: Modifier = Modifier,
+    color:Color = MaterialTheme.colors.primaryVariant
 ) {
     Text(
-        modifier = androidx.compose.ui.Modifier.wrapContentSize(),
+        modifier = Modifier.wrapContentSize(),
         text = text,
-        color = Color.White,
+        color = color,
         style = MaterialTheme.typography.h5
     )
 }
@@ -28,13 +29,14 @@ fun SubHeaderText(
     text: String,
     @StringRes txtRes: Int = R.string.app_name,
     modifier: Modifier = Modifier,
+    color:Color = MaterialTheme.colors.background
 ) {
     Text(
-        modifier = Modifier.wrapContentSize(),
+        modifier = modifier.wrapContentSize(),
         text = text,
-        color = Color.White,
+        color = color,
         style = MaterialTheme.typography.h6,
-        fontSize = 22.sp
+        fontSize = 18.sp
     )
 }
 @Composable
@@ -55,7 +57,7 @@ fun DescriptionText(
     text: String,
     @StringRes txtRes: Int = R.string.app_name,
     modifier: Modifier = Modifier.wrapContentSize(),
-    color:Color = Color.White
+    color:Color = MaterialTheme.colors.background
 ) {
     Text(
         modifier =Modifier.wrapContentSize(),

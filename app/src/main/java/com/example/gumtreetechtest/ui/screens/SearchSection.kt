@@ -3,6 +3,7 @@ package com.example.gumtreetechtest.ui.screens
 
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -27,58 +28,60 @@ fun SearchSection(
     modifier: Modifier = Modifier,
     viewModel: MainViewModel = hiltViewModel()
 ) {
-    Box(
-        modifier = modifier
-            .wrapContentSize()
-            .border(
-                2.dp,
-                color = Color.LightGray,
-                RectangleShape
-            )
-    ) {
-        Column(
-            modifier = Modifier
+        Box(
+            modifier = modifier
                 .wrapContentSize()
-                .padding(dimensionResource(id = R.dimen.standard_padding)),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.SpaceEvenly
-        )
-        {
-            SearchTextField(
-                modifier = Modifier.semantics {
-                    contentDescription = MAKE_INPUT_FIELD_DESCRIPTION
-                },
-                label = stringResource(R.string.make_input_txt),
-                onTxtChange = { viewModel.setMake(it) },
-                selectedItem = viewModel.selectedMake
-            )
-            SearchTextField(
-                modifier = Modifier.semantics {
-                    contentDescription = MODEL_INPUT_FIELD_DESCRIPTION
-                },
-                label = stringResource(R.string.model_input_txt),
-                onTxtChange = { viewModel.setModel(it) },
-                selectedItem = viewModel.selectedModel,
-            )
-            SearchTextField(
-                modifier = Modifier.semantics {
-                    contentDescription = YEAR_INPUT_FIELD_DESCRIPTION
-                },
-                label = stringResource(R.string.year_input_txt),
-                onTxtChange = { viewModel.setYear(it) },
-                selectedItem = viewModel.selectedYear,
-            )
-            StandardButton(
+                .border(
+                    2.dp,
+                    color = MaterialTheme.colors.background,
+                    RectangleShape
+                )
+        ) {
+            Column(
                 modifier = Modifier
-                    .semantics { contentDescription = UPDATE_SEARCH_RESULTS_BUTTON_DESCRIPTION },
-                stringResource(R.string.update_results_cta),
-                onClick = {
-                    viewModel.upDateResults()
-                }
+                    .wrapContentSize()
+                    .padding(dimensionResource(id = R.dimen.standard_padding)),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.SpaceEvenly
             )
+            {
+                SearchTextField(
+                    modifier = Modifier.semantics {
+                        contentDescription = MAKE_INPUT_FIELD_DESCRIPTION
+                    },
+                    label = stringResource(R.string.make_input_txt),
+                    onTxtChange = { viewModel.setMake(it) },
+                    selectedItem = viewModel.selectedMake
+                )
+                SearchTextField(
+                    modifier = Modifier.semantics {
+                        contentDescription = MODEL_INPUT_FIELD_DESCRIPTION
+                    },
+                    label = stringResource(R.string.model_input_txt),
+                    onTxtChange = { viewModel.setModel(it) },
+                    selectedItem = viewModel.selectedModel,
+                )
+                SearchTextField(
+                    modifier = Modifier.semantics {
+                        contentDescription = YEAR_INPUT_FIELD_DESCRIPTION
+                    },
+                    label = stringResource(R.string.year_input_txt),
+                    onTxtChange = { viewModel.setYear(it) },
+                    selectedItem = viewModel.selectedYear,
+                )
+                StandardButton(
+                    modifier = Modifier
+                        .semantics { contentDescription = UPDATE_SEARCH_RESULTS_BUTTON_DESCRIPTION },
+                    stringResource(R.string.update_results_cta),
+                    onClick = {
+                        viewModel.upDateResults()
+                    }
+                )
+            }
         }
     }
-}
+
+
 
 @Preview
 @Composable

@@ -5,6 +5,9 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Card
+import androidx.compose.material.MaterialTheme
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -15,17 +18,18 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import com.example.gumtreetechtest.R
 import com.example.gumtreetechtest.ui.models.Car
+import com.example.gumtreetechtest.ui.themes.MotorsGreyLight
 
 @Composable
 fun ScrollingList(items: List<Car>) = if (items.size > 0) {
     LazyColumn(
         verticalArrangement = Arrangement.spacedBy(
-            4.dp,
+            dimensionResource(id = R.dimen.small_padding),
             Alignment.CenterVertically
         ),
         modifier = Modifier
             .fillMaxSize()
-            .semantics { contentDescription = RESULTS_SECTION_DESCRIPTION  }
+            .semantics { contentDescription = RESULTS_SECTION_DESCRIPTION }
     ) {
         items(items) { item ->
             CarListItem(item)
@@ -45,27 +49,36 @@ fun ScrollingList(items: List<Car>) = if (items.size > 0) {
 
 @Composable
 fun CarListItem(car: Car,
-                modifier: Modifier = Modifier) {
-    Row(
-        modifier = Modifier
-            .background(Color.Gray)
-            .padding(
-                horizontal = dimensionResource(id = R.dimen.medium_padding)
-            )
+     modifier: Modifier = Modifier) {
+    Card(
+        shape = RoundedCornerShape(dimensionResource(id = R.dimen.standard_corner_radius)),
+        backgroundColor = MaterialTheme.colors.surface,
+        modifier = modifier
             .fillMaxWidth()
-            .height(dimensionResource(id = R.dimen.large_component_height)),
+            .height(dimensionResource(id = R.dimen.large_component_height))
     ) {
-        Column {
-            HeaderText(
-                text = car.title
+        Column(
+            modifier = Modifier
+                .padding(
+                    horizontal = dimensionResource(id = R.dimen.medium_padding),
+                    vertical = dimensionResource(id = R.dimen.small_padding)
             )
+        ) {
             Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.small_padding)))
+
+            HeaderText(
+                text = car.title,
+                color = MotorsGreyLight
+            )
+            Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.medium_padding)))
             SubHeaderText(
-                text = car.price
+                text = car.price,
+                color = MotorsGreyLight
             )
             Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.small_padding)))
             DescriptionText(
-                text = "${car.make}   ${car.model}   ${car.year} "
+                text = "${car.make}   ${car.model}   ${car.year} ",
+                color = MotorsGreyLight
             )
         }
     }
