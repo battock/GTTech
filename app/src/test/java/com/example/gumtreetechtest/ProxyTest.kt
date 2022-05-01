@@ -79,8 +79,6 @@ class ProxyTest {
             assert(errorSearchResult is Result.Error)
         }
     }
-
-
 }
 
 
