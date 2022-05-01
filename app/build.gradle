@@ -12,6 +12,9 @@ android {
     buildFeatures {
         compose true
     }
+    composeOptions {
+        kotlinCompilerExtensionVersion compose_compiler_version
+    }
 
     defaultConfig {
         applicationId "com.example.gumtreetechtest"
@@ -32,26 +35,28 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_11
-        targetCompatibility JavaVersion.VERSION_11
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = '11'
-        useIR = true
+        jvmTarget = '1.8'
     }
-
-    composeOptions {
-        kotlinCompilerExtensionVersion compose_version
-        kotlinCompilerVersion '1.5.21'
+    buildFeatures {
+        compose true
     }
     packagingOptions {
+        jniLibs {
+            excludes += ['META-INF/licenses/**']
+        }
         resources {
-            excludes += '/META-INF/{AL2.0,LGPL2.1}'
+            excludes += ['**/attach_hotspot_windows.dll', 'META-INF/licenses/**', 'META-INF/AL2.0', 'META-INF/LGPL2.1']
         }
     }
+
 }
 
 dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
 
     // UI Tests
     androidTestImplementation 'androidx.compose.ui:ui-test-junit4:1.1.1'
@@ -60,9 +65,9 @@ dependencies {
     androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
 
 
-    implementation "androidx.core:core-ktx:kotlin_version"
+    implementation 'androidx.core:core-ktx:1.7.0'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.0"
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1'
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.1'
     implementation 'com.google.android.material:material:1.5.0'
@@ -70,21 +75,17 @@ dependencies {
     implementation 'androidx.compose.ui:ui-tooling:1.1.1'
     implementation 'androidx.compose.runtime:runtime-livedata:1.1.1'
     implementation 'androidx.compose.runtime:runtime-rxjava2:1.1.1'
-    implementation "androidx.compose.ui:ui:$compose_version"
-    implementation "androidx.compose.material:material:$compose_version"
-    implementation "androidx.compose.ui:ui-tooling-preview:$compose_version"
+    implementation "androidx.compose.material:material:1.1.1"
+    implementation "androidx.compose.ui:ui-tooling-preview:1.1.1"
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.4.1'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.5.0-beta01"
     implementation 'androidx.activity:activity-compose:1.4.0'
-    debugImplementation "androidx.compose.ui:ui-tooling:$compose_version"
 
     //di
-    implementation "com.google.dagger:hilt-android:2.40"
-    kapt "com.google.dagger:hilt-android-compiler:2.40"
+    implementation 'com.google.dagger:hilt-android:2.41'
+    kapt 'com.google.dagger:hilt-android-compiler:2.41'
 
-
-    implementation "androidx.compose.runtime:runtime-livedata:$compose_version"
     implementation "androidx.lifecycle:lifecycle-viewmodel-compose:$compose_version"
     testImplementation 'junit:junit:4.13.2'
 
@@ -102,12 +103,12 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
 
     //Mocking framework
-    androidTestImplementation "io.mockk:mockk:1.12.0"
-    testImplementation "io.mockk:mockk:1.12.0"
+    androidTestImplementation 'io.mockk:mockk:1.12.3'
+    testImplementation 'io.mockk:mockk:1.12.3'
 
     //Testing framework
-    androidTestImplementation 'io.kotlintest:kotlintest-runner-junit5:3.3.0'
-    testImplementation 'io.kotlintest:kotlintest-runner-junit5:3.3.0'
+    androidTestImplementation 'io.kotlintest:kotlintest-runner-junit5:3.4.2'
+    testImplementation 'io.kotlintest:kotlintest-runner-junit5:3.4.2'
     testImplementation 'androidx.arch.core:core-testing:2.1.0'
     testImplementation 'junit:junit:4.+'
 
@@ -118,6 +119,6 @@ dependencies {
     //retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
-    implementation 'com.squareup.okhttp3:logging-interceptor:4.9.2'
+    implementation 'com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.7'
 
 }
