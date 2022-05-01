@@ -1,7 +1,6 @@
 package com.example.gumtreetechtest.ui.screens
 
 
-import android.util.Log
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
@@ -15,7 +14,6 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.gumtreetechtest.R
 import com.example.gumtreetechtest.ui.components.*
 import com.example.gumtreetechtest.ui.viewmodels.MainViewModel
-import java.lang.NumberFormatException
 
 const val SEARCH_SECTION_LOGGING_TAG = "Search Section screen"
 

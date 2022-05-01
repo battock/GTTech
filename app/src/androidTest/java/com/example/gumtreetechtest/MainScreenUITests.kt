@@ -1,43 +1,50 @@
 package com.example.gumtreetechtest
 
+import android.app.Application
+import androidx.activity.viewModels
 import androidx.compose.ui.test.assertIsDisplayed
+import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithText
-import androidx.compose.ui.test.performClick
-import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.example.gumtreetechtest.domain.CarsRepository
+import com.example.gumtreetechtest.ui.InputValidator
 import com.example.gumtreetechtest.ui.screens.MainScreen
-import com.example.gumtreetechtest.ui.screens.SearchSection
 import com.example.gumtreetechtest.ui.themes.GumTreeAppTheme
 import com.example.gumtreetechtest.ui.viewmodels.MainViewModel
-import io.mockk.MockKAnnotations
-import io.mockk.impl.annotations.RelaxedMockK
+import dagger.hilt.android.testing.CustomTestApplication
+import io.mockk.mockk
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
-import org.junit.runner.RunWith
+import javax.inject.Inject
 
-@RunWith(AndroidJUnit4::class)
+@ExperimentalCoroutinesApi
 class MainScreenUITests {
 
-    @get:Rule
+    @get:Rule(order = 2)
     val composeTestRule = createComposeRule()
 
-    @RelaxedMockK
-    private lateinit var viewModel:MainViewModel
+    val mockRepo:CarsRepository = mockk()
+    val mockValidator:InputValidator = mockk()
+
+    val viewModel = MainViewModel(mockRepo,mockValidator)
+
 
     @Before
     fun setUp(){
-        MockKAnnotations.init(this)
+        composeTestRule.setContent {
+            GumTreeAppTheme{
+                MainScreen(viewModel)
+            }
+        }
     }
 
     @Test
     fun mainTitle_isShown() {
-        composeTestRule.setContent {
-            GumTreeAppTheme{
-                MainScreen(viewModel = viewModel)
-            }
-        }
         composeTestRule.onNodeWithText("Motors.co.uk").assertIsDisplayed()
     }
 }
+
+@CustomTestApplication(Application::class)
+interface HiltTestApplication

@@ -49,7 +49,7 @@ class MainActivity : ComponentActivity() {
                                     icon = {
                                         Icon(
                                             screen.icon,
-                                            contentDescription = ""//stringResource(id = screen.contentDescription)
+                                            contentDescription = ""// todo stringResource(id = screen.contentDescription)
                                         )
                                     },
                                     label = { Text(stringResource(screen.resourceId)) },
@@ -73,8 +73,9 @@ class MainActivity : ComponentActivity() {
                         startDestination = Screen.MainScreen.route,
                         Modifier.padding(innerPadding)
                     ) {
-                        composable(Screen.MainScreen.route) { backStackEntry-> MainScreen(navController, viewModel) }
-                        composable(Screen.InfoScreen.route) { InfoScreen(navController) }
+                        composable(Screen.MainScreen.route) { backStackEntry-> GumTreeAppTheme{
+                        MainScreen(viewModel) }}
+                        composable(Screen.InfoScreen.route) { GumTreeAppTheme{InfoScreen(navController) }}
                     }
 
                 }

@@ -15,8 +15,7 @@ import com.example.gumtreetechtest.ui.viewmodels.MainViewModel
 
 @Composable
 fun MainScreen(
-    navController: NavController? = null,
-    viewModel: MainViewModel = hiltViewModel()
+    viewModel:MainViewModel = hiltViewModel()
 ) {
     Column(
         modifier = Modifier
@@ -26,11 +25,11 @@ fun MainScreen(
         verticalArrangement = Arrangement.Center
     )
         {
-            SearchSection()
+            SearchSection(viewModel =viewModel)
             Spacer(modifier = Modifier
                 .fillMaxWidth()
                 .height(dimensionResource(id = R.dimen.small_padding)))
-            ResultsSection()
+            ResultsSection(viewModel =viewModel)
         }
 }
 
