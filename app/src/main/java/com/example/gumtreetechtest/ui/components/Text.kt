@@ -42,10 +42,10 @@ fun SubHeaderText(
 fun ErrorText(
     text: String,
     @StringRes txtRes: Int = R.string.app_name,
-    modifier: Modifier = Modifier.wrapContentSize()
+    modifier: Modifier = Modifier
 ) {
     Text(
-        modifier =Modifier.wrapContentSize(),
+        modifier =modifier.wrapContentSize(),
         text = text,
         color = Color.Red,
         style = MaterialTheme.typography.body2

@@ -23,5 +23,6 @@
     <string name="make_input_txt">Make</string>
     <string name="model_input_txt">Model</string>
     <string name="year_input_txt">Year</string>
+    <string name="generic_invalid_txt_message">invalid input</string>
 
 </resources>

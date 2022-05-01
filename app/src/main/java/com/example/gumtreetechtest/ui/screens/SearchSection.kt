@@ -89,8 +89,8 @@ fun showSearchScreen(){
 }
 
 const val UPDATE_SEARCH_RESULTS_BUTTON_DESCRIPTION = "update_results_button"
-const val MAKE_INPUT_FIELD_DESCRIPTION = "update_results_button_make"
-const val MODEL_INPUT_FIELD_DESCRIPTION = "update_results_button_model"
-const val YEAR_INPUT_FIELD_DESCRIPTION = "update_results_button_year"
+const val MAKE_INPUT_FIELD_DESCRIPTION = "input_field_make_description"
+const val MODEL_INPUT_FIELD_DESCRIPTION = "input_field_model_description"
+const val YEAR_INPUT_FIELD_DESCRIPTION = "input_field_year_description"
 
 

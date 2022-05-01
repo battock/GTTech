@@ -4,7 +4,7 @@ import androidx.compose.ui.test.*
 import androidx.compose.ui.test.junit4.createComposeRule
 import com.example.gumtreetechtest.ui.screens.*
 import com.example.gumtreetechtest.ui.themes.GumTreeAppTheme
-import com.example.gumtreetechtest.ui.viewmodels.ApiState
+import com.example.gumtreetechtest.network.ApiState
 import com.example.gumtreetechtest.ui.viewmodels.MainViewModel
 import com.example.gumtreetechtest.ui.viewmodels.SearchInput
 import io.mockk.MockKAnnotations
@@ -30,6 +30,7 @@ class MainScreenUITests {
         coEvery { viewModel.setMake(any()) } returns Unit
         coEvery { viewModel.setModel(any()) } returns Unit
         coEvery { viewModel.setYear(any()) } returns Unit
+        coEvery { viewModel.upDateResults() } returns Unit
 
         coEvery { viewModel.selectedMake.value } returns SearchInput()
         coEvery { viewModel.selectedModel.value } returns SearchInput()

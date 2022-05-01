@@ -16,6 +16,8 @@ import androidx.compose.ui.focus.onFocusEvent
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.capitalize
 import androidx.compose.ui.text.toLowerCase
@@ -40,7 +42,7 @@ fun SearchTextField(
     var mIsError by remember { mutableStateOf(false) }
 
     mSelectedText = selectedItem?.value?.data?:""
-    mIsError = selectedItem?.value?.errorText?.let {true } ?: false
+    mIsError = selectedItem?.value?.invalidText?.let {true } ?: false
 
     Column(
         Modifier
@@ -75,7 +77,10 @@ fun SearchTextField(
                 }
             )
             if (mIsError) {
-                ErrorText(text = selectedItem?.value?.errorText!!)
+                ErrorText(modifier = Modifier.semantics {
+                        contentDescription = INPUT_VALIDATION_ERROR_TEXT
+                    },
+                    text = selectedItem?.value?.invalidText?.title?: stringResource(R.string.generic_invalid_txt_message))
             }
         }
     }
@@ -88,4 +93,4 @@ fun StandardDropDownPreview() {
     SearchTextField(label = "", onTxtChange = {})
 }
 
-
+const val INPUT_VALIDATION_ERROR_TEXT = "input_validation_error_txt"

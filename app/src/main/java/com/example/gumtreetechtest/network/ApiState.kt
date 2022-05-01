@@ -1,4 +1,4 @@
-package com.example.gumtreetechtest.ui.viewmodels
+package com.example.gumtreetechtest.network
 
 enum class ApiState {
     ERROR,

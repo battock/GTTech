@@ -6,6 +6,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.*
 import com.example.gumtreetechtest.network.Result
 import com.example.gumtreetechtest.domain.CarsRepository
+import com.example.gumtreetechtest.network.ApiState
 import com.example.gumtreetechtest.ui.InputValidator
 import com.example.gumtreetechtest.ui.ValidationType
 import com.example.gumtreetechtest.ui.models.Car
@@ -74,7 +75,7 @@ class MainViewModel @Inject constructor(
     }
 
     @VisibleForTesting
-    private fun validateInputs(): Boolean =
+    fun validateInputs(): Boolean =
         validateMake() && validateModel() && validateYear()
 
 
@@ -83,7 +84,7 @@ class MainViewModel @Inject constructor(
      */
     private fun validateMake(): Boolean {
         if (!inputValidation.validate(selectedMake.value.data, ValidationType.MAKE)) {
-            selectedMake.value = SearchInput(errorText = "input must be valid make")
+            selectedMake.value = SearchInput(invalidText=InvalidText.INVALID_MAKE)
             return false
         }
         return true
@@ -94,7 +95,7 @@ class MainViewModel @Inject constructor(
     */
     private fun validateYear(): Boolean {
         if (!inputValidation.validate(selectedYear.value.data, ValidationType.YEAR)) {
-            selectedYear.value = SearchInput(errorText = "input must be valid year")
+            selectedYear.value = SearchInput(invalidText=InvalidText.INVALID_YEAR)
             return false
         }
         return true
@@ -105,7 +106,7 @@ class MainViewModel @Inject constructor(
     */
     private fun validateModel(): Boolean {
         if (!inputValidation.validate(selectedModel.value.data, ValidationType.MODEL)) {
-            selectedModel.value = SearchInput(errorText = "input must be valid model")
+            selectedModel.value = SearchInput(invalidText=InvalidText.INVALID_MODEL)
             return false
         }
         return true
@@ -114,5 +115,11 @@ class MainViewModel @Inject constructor(
 
 data class SearchInput(
     val data: String = "",
-    val errorText: String? = null
+    val invalidText: InvalidText? = null
 )
+
+enum class InvalidText(val title:String){
+    INVALID_MAKE("Enter a valid make"),
+    INVALID_MODEL("Enter a valid model"),
+    INVALID_YEAR("Enter a valid year")
+}
