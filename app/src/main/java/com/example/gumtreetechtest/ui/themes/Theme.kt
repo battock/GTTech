@@ -24,9 +24,6 @@ private val GumTreeLightColorPalette = lightColors(
     surface = blueText,
     onSurface = card
 )
-
-
-
 @Composable
 fun GumTreeAppTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),

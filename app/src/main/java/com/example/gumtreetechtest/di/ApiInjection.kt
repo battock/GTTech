@@ -12,7 +12,6 @@ import javax.inject.Singleton
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 
-
 const val BASE_URL = "http://mcuapi.mocklab.io/"
 
 @Module

@@ -5,8 +5,6 @@ import android.util.Log.DEBUG
 import android.util.Log.ERROR
 import android.util.Log.VERBOSE
 
-
-
 fun logging(loggingTag:String,message:String,type:LoggingType = LoggingType.VERBOSE){
     try{
         when(type){

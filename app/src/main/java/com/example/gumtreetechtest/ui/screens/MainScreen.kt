@@ -16,7 +16,6 @@ import com.example.gumtreetechtest.ui.components.HeaderText
 import com.example.gumtreetechtest.ui.themes.GumTreeAppTheme
 import com.example.gumtreetechtest.ui.viewmodels.MainViewModel
 
-
 @Composable
 fun MainScreen(
     viewModel:MainViewModel = hiltViewModel()

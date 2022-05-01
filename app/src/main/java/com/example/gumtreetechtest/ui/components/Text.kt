@@ -10,7 +10,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.sp
 import com.example.gumtreetechtest.R
 
-
 @Composable
 fun HeaderText(
     text: String,
@@ -63,19 +62,5 @@ fun DescriptionText(
         text = text,
         color = color,
         style = MaterialTheme.typography.body1
-    )
-}
-
-@Composable
-fun SmallDescriptionText(
-    modifier: Modifier = Modifier,
-    text: String,
-    @StringRes txtRes: Int = R.string.app_name
-) {
-    Text(
-        modifier = androidx.compose.ui.Modifier.wrapContentSize(),
-        text = text,
-        color = Color.White,
-        style = MaterialTheme.typography.body2
     )
 }

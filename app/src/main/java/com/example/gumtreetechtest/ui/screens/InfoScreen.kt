@@ -1,8 +1,6 @@
 package com.example.gumtreetechtest.ui.screens
 
-import android.text.Html
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.Button
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -14,7 +12,6 @@ import com.example.gumtreetechtest.R
 import com.example.gumtreetechtest.ui.components.DescriptionText
 import com.example.gumtreetechtest.ui.components.HeaderText
 import com.example.gumtreetechtest.ui.themes.GumTreeAppTheme
-
 
 @Composable
 fun InfoScreen(

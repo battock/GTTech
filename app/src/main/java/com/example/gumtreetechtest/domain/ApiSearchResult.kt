@@ -1,6 +1,5 @@
 package com.example.gumtreetechtest.domain
 
-
 data class SearchResults(
     val id:String,
     val name:String,

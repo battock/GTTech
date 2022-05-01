@@ -1,7 +1,6 @@
 package com.example.gumtreetechtest.api
 
 import com.example.gumtreetechtest.domain.ApiResults
-import com.example.gumtreetechtest.network.Result
 import retrofit2.http.GET
 import retrofit2.http.Query
 
