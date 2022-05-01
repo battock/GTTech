@@ -1,7 +1,6 @@
 package com.example.gumtreetechtest.di
 
-import com.example.gumtreetechtest.api.CarsApi
-import com.example.gumtreetechtest.ui.InputValidation
+import com.example.gumtreetechtest.ui.InputValidator
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -13,7 +12,7 @@ import javax.inject.Singleton
 object InputValidatorInjection {
     @Singleton
     @Provides
-    fun provideInputValidator(): InputValidation {
-        return InputValidation()
+    fun provideInputValidator(): InputValidator {
+        return InputValidator()
     }
 }

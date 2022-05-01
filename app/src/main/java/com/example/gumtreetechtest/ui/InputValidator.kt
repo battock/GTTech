@@ -7,7 +7,7 @@ import java.lang.NumberFormatException
 /*
 Just a basic try catch but in a real application this would be more considered
  */
-class InputValidation {
+class InputValidator {
     var validYear: Boolean = false
         private set
     var validMake: Boolean = false

@@ -6,7 +6,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.*
 import com.example.gumtreetechtest.network.Result
 import com.example.gumtreetechtest.domain.CarsRepository
-import com.example.gumtreetechtest.ui.InputValidation
+import com.example.gumtreetechtest.ui.InputValidator
 import com.example.gumtreetechtest.ui.ValidationType
 import com.example.gumtreetechtest.ui.models.Car
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -16,7 +16,7 @@ import javax.inject.Inject
 @HiltViewModel
 class MainViewModel @Inject constructor(
     val carsRepository: CarsRepository,
-    val inputValidation: InputValidation
+    val inputValidation: InputValidator
 ) : ViewModel() {
 
     private val LOGGING_TAG by lazy { this.javaClass.simpleName }
