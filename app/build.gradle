@@ -57,6 +57,7 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.google.ar:core:1.25.0'
 
     // UI Tests
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
