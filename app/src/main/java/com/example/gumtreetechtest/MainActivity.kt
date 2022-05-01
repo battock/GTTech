@@ -75,7 +75,7 @@ class MainActivity : ComponentActivity() {
                     ) {
                         composable(Screen.MainScreen.route) { backStackEntry-> GumTreeAppTheme{
                         MainScreen(viewModel) }}
-                        composable(Screen.InfoScreen.route) { GumTreeAppTheme{InfoScreen(navController) }}
+                        composable(Screen.InfoScreen.route) { GumTreeAppTheme{InfoScreen() }}
                     }
 
                 }

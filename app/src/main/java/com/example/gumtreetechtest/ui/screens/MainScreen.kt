@@ -28,6 +28,9 @@ fun MainScreen(
         verticalArrangement = Arrangement.Center
     )
         {
+            Spacer(modifier = Modifier
+                .fillMaxWidth()
+                .height(dimensionResource(id = R.dimen.small_padding)))
             HeaderText(
                 modifier = Modifier.semantics {
                     contentDescription = HEADER_TXT_DESCRIPTION

@@ -1,6 +1,5 @@
 package com.example.gumtreetechtest.ui.themes
 
-import android.annotation.SuppressLint
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.darkColors

@@ -4,17 +4,19 @@
     <string name="info_screen">Info</string>
     <string name="info_screen_description">
         \n
-        I just wanted to write a second screen to show navigation and in place of a Read.me file.
-        There are a few things I didt implement in this app due to time constraints that I would have in a full production app.
-        Here are the improvements I would make if i had more time…
-        \n\n\n
-        *  I would have had drop downs for each make and model box on the search screen to show possible makes and also associated models.
+        This is just a second screen so i could add some form of navigatio to this app but also in place of a Read.me file to allow me to explain some of my decisions.
+        There are a few things I didn\'t implement in this app that I would have in a full production app.
         \n\n
-        *  Drop down in the year box to show all available years. I would thnk in a proper app this information would be provided through an api on start up of the search screen to show all available options.
+        Below are some of the improvements I might make…
         \n\n
-        *  I have not added any filters etc as it was not specified in the test criteria.
+        1)  I would have had drop downs for each make and model box on the search screen to show possible makes and also their associated models. I considered implementing a basic drop down option but thought it would be a lot of effort and to get any real effect I\'d have to add quite a lot of make and model options.
         \n\n
-        *  I added a sealed class to track the network response. I havent added a loading enum or a progress spinner for this MVP but the sealed class allows for that sort of thing to be added quite easily. I only added error and success scenarios to show how it would be handled.
+        2)  Drop down in the year box to show all available years. I would thnk in a proper app this information would be provided through an api on start up of the search screen to show all available options.
+        \n\n
+        3)  I have not added any filters or sorting to the results etc as it was not specified in the test criteria but in a full app it would be fairly easy to set up filtering and sortign options for the results.
+        \n\n
+        4)  I added a sealed class to track the network response. I haven\'t added a loading enum or a progress spinner for this MVP but the sealed class allows for that sort of thing to be added quite easily later. I only added error and success scenarios to show how it would be handled.
+        \n\n
         \n\n\n\n
     </string>
     <string name="no_data_message">No cars match current search criteria</string>

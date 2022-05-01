@@ -1,6 +1,10 @@
 package com.example.gumtreetechtest.ui.screens
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -16,18 +20,28 @@ import com.example.gumtreetechtest.ui.themes.GumTreeAppTheme
 
 @Composable
 fun InfoScreen(
-    navController: NavController?
 ) {
+    val scrollState = rememberScrollState()
+
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(dimensionResource(id = R.dimen.medium_padding)),
+            .wrapContentSize()
+            .padding(
+                horizontal = dimensionResource(id = R.dimen.medium_padding),
+                vertical = dimensionResource(id = R.dimen.small_padding)
+            )
+            .verticalScroll(scrollState),
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Top
+        verticalArrangement = Arrangement.Top,
+
     )
         {
-            HeaderText(text = "Info screen")
-            DescriptionText(text = stringResource(R.string.info_screen_description), color = MaterialTheme.colors.surface)
+            Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.small_padding)))
+            HeaderText(text = "Info screen",
+                color = MaterialTheme.colors.surface)
+            DescriptionText(text = stringResource(R.string.info_screen_description),
+                color = MaterialTheme.colors.surface)
         }
 }
 
@@ -36,7 +50,7 @@ fun InfoScreen(
 @Composable
 fun DefaultInfoScreenPreview() {
     GumTreeAppTheme {
-        InfoScreen(null)
+        InfoScreen()
     }
 }
 
@@ -44,6 +58,6 @@ fun DefaultInfoScreenPreview() {
 @Composable
 fun DarkInfoScreenPreview() {
     GumTreeAppTheme {
-        InfoScreen(null)
+        InfoScreen()
     }
 }
