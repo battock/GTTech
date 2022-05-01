@@ -5,6 +5,7 @@ import com.example.gumtreetechtest.domain.CarsRepository
 import com.example.gumtreetechtest.network.Result
 import com.example.gumtreetechtest.ui.InputValidator
 import com.example.gumtreetechtest.ui.ValidationType
+import com.example.gumtreetechtest.ui.viewmodels.InvalidText
 import com.example.gumtreetechtest.ui.viewmodels.MainViewModel
 import com.example.gumtreetechtest.ui.viewmodels.SearchInput
 import io.mockk.MockKAnnotations
@@ -22,7 +23,6 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
-
 
 @RunWith(JUnit4::class)
 class MainViewModelTest {
@@ -53,7 +53,7 @@ class MainViewModelTest {
     fun invalidMakeTriggersValidationError_whenupdateResultsIsClicked() = runTest{
         every { inputValidator.validate(any(), ValidationType.MAKE) } returns false
         this.launch {
-            val expectedResult =  SearchInput(errorText = "input must be valid make")
+            val expectedResult =  SearchInput(invalidText = InvalidText.INVALID_MAKE)
             viewModel.upDateResults()
             val actualResult = viewModel.selectedMake.value
 
@@ -66,7 +66,7 @@ class MainViewModelTest {
     fun invalidModelTriggersValidationError_whenupdateResultsIsClicked() = runTest{
         every { inputValidator.validate(any(), ValidationType.MODEL) } returns false
         this.launch {
-            val expectedResult = SearchInput(errorText = "input must be valid model")
+            val expectedResult = SearchInput(invalidText = InvalidText.INVALID_MODEL)
             viewModel.upDateResults()
             val actualResult = viewModel.selectedModel.value
 
@@ -79,7 +79,7 @@ class MainViewModelTest {
     fun invalidYearTriggersValidationError_whenupdateResultsIsClicked() = runTest{
         every { inputValidator.validate(any(), ValidationType.YEAR) } returns false
         this.launch {
-            val expectedResult = SearchInput(errorText = "input must be valid year")
+            val expectedResult = SearchInput(invalidText = InvalidText.INVALID_YEAR)
             viewModel.upDateResults()
             val actualResult = viewModel.selectedYear.value
 
