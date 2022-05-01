@@ -4,7 +4,9 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.example.gumtreetechtest.domain.CarsRepository
 import com.example.gumtreetechtest.network.Result
 import com.example.gumtreetechtest.ui.InputValidator
+import com.example.gumtreetechtest.ui.ValidationType
 import com.example.gumtreetechtest.ui.viewmodels.MainViewModel
+import com.example.gumtreetechtest.ui.viewmodels.SearchInput
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.coVerify
@@ -50,25 +52,43 @@ class MainViewModelTest {
         every { viewModel.inputValidation.validate(any(), any()) } returns true
     }
 
-
     @Test
-    fun textBoxesAreValidated_whenupdateResultsIsClicked() = runTest {
-        assert(false)
+    fun invalidMakeTriggersValidationError_whenupdateResultsIsClicked() = runTest{
+        every { inputValidator.validate(any(), ValidationType.MAKE) } returns false
+        this.launch {
+            val expectedResult =  SearchInput(errorText = "input must be valid make")
+            viewModel.upDateResults()
+            val actualResult = viewModel.selectedMake.value
+
+            assert(expectedResult==actualResult)
+            viewModel.upDateResults()
+        }
     }
 
     @Test
-    fun invalidMakeTriggersValidationError_whenupdateResultsIsClicked() {
-        assert(false)
+    fun invalidModelTriggersValidationError_whenupdateResultsIsClicked() = runTest{
+        every { inputValidator.validate(any(), ValidationType.MODEL) } returns false
+        this.launch {
+            val expectedResult = SearchInput(errorText = "input must be valid model")
+            viewModel.upDateResults()
+            val actualResult = viewModel.selectedModel.value
+
+            assert(expectedResult==actualResult)
+            viewModel.upDateResults()
+        }
     }
 
     @Test
-    fun invalidModelTriggersValidationError_whenupdateResultsIsClicked() {
-        assert(false)
-    }
+    fun invalidYearTriggersValidationError_whenupdateResultsIsClicked() = runTest{
+        every { inputValidator.validate(any(), ValidationType.YEAR) } returns false
+        this.launch {
+            val expectedResult = SearchInput(errorText = "input must be valid year")
+            viewModel.upDateResults()
+            val actualResult = viewModel.selectedYear.value
 
-    @Test
-    fun invalidYearTriggersValidationError_whenupdateResultsIsClicked() {
-        assert(false)
+            assert(expectedResult==actualResult)
+            viewModel.upDateResults()
+        }
     }
 
     @Test
