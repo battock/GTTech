@@ -4,6 +4,7 @@ import android.util.Log
 import com.example.gumtreetechtest.api.CarsApi
 import com.example.gumtreetechtest.network.Result
 import com.example.gumtreetechtest.ui.models.Car
+import com.example.gumtreetechtest.utils.logging
 import java.lang.Exception
 import javax.inject.Inject
 
@@ -16,7 +17,7 @@ class CarsProxyImpl @Inject constructor(
         return try {
             val results = api.fetchCars(make, model, year)
             Result.Success(
-                data = results.searchResults.map {
+                data = results!!.searchResults!!.map {
                     Car(
                         make = it.make,
                         model = it.model,
@@ -27,7 +28,7 @@ class CarsProxyImpl @Inject constructor(
                     )
                 })
         } catch (ex: Exception) {
-            Log.e(LOGGING_TAG, "error fetching car data")
+            logging(LOGGING_TAG, "error fetching car data")
             Result.Error(exception = ex)
         }
     }

@@ -33,9 +33,6 @@ class MainViewModelTest {
     @RelaxedMockK
     private lateinit var inputValidator: InputValidator
 
-    @RelaxedMockK
-    private lateinit var testDispatcher: TestDispatcher
-
     private lateinit var viewModel: MainViewModel
 
     @get:Rule

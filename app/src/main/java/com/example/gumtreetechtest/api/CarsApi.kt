@@ -11,5 +11,5 @@ interface CarsApi {
         @Query("make") make:String,
         @Query("model") model:String,
         @Query("year") year:String
-    ): ApiResults
+    ): ApiResults?
 }

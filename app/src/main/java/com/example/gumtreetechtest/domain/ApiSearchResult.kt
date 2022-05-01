@@ -12,5 +12,5 @@ data class SearchResults(
 )
 
 data class ApiResults(
-    val searchResults: List<SearchResults>
+    val searchResults: List<SearchResults>?
 )
