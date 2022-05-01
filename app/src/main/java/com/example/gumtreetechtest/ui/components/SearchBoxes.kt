@@ -16,6 +16,7 @@ import androidx.compose.ui.focus.onFocusEvent
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.capitalize
 import androidx.compose.ui.text.toLowerCase
 import androidx.compose.ui.tooling.preview.Preview
@@ -30,6 +31,7 @@ import java.util.*
 
 @Composable
 fun SearchTextField(
+    modifier: Modifier = Modifier,
     label: String,
     onTxtChange: (selectedItem: String) -> Unit,
     selectedItem: State<SearchInput>? = null
@@ -64,7 +66,7 @@ fun SearchTextField(
                     mSelectedText = it
                     onTxtChange(it)
                 },
-                modifier = Modifier
+                modifier = modifier
                     .fillMaxWidth()
                     .wrapContentHeight(),
                 label = {
@@ -83,5 +85,7 @@ fun SearchTextField(
 @Preview
 @Composable
 fun StandardDropDownPreview() {
-    SearchTextField("", {})
+    SearchTextField(label = "", onTxtChange = {})
 }
+
+

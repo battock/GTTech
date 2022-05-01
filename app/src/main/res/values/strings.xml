@@ -18,5 +18,10 @@
         \n\n\n\n
     </string>
     <string name="no_data_message">No cars match current search criteria</string>
+    <string name="main_header_txt">Motors.co.uk</string>
+    <string name="update_results_cta">Update results</string>
+    <string name="make_input_txt">Make</string>
+    <string name="model_input_txt">Model</string>
+    <string name="year_input_txt">Year</string>
 
 </resources>

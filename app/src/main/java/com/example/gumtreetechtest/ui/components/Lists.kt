@@ -19,6 +19,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import com.example.gumtreetechtest.R
 import com.example.gumtreetechtest.ui.models.Car
@@ -33,6 +35,7 @@ fun ScrollingList(items: List<Car>) = if (items.size > 0) {
         ),
         modifier = Modifier
             .fillMaxSize()
+            .semantics { contentDescription = RESULTS_SECTION_DESCRIPTION  }
     ) {
         items(items) { item ->
             CarListItem(item)
@@ -42,9 +45,7 @@ fun ScrollingList(items: List<Car>) = if (items.size > 0) {
     Column(
         Modifier
             .fillMaxSize()
-            .padding(dimensionResource(id = R.dimen.medium_padding))
-            .animateContentSize(tween(200) )
-        ,
+            .padding(dimensionResource(id = R.dimen.medium_padding)),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
@@ -78,5 +79,6 @@ fun CarListItem(car: Car,
             )
         }
     }
-
 }
+
+const val RESULTS_SECTION_DESCRIPTION = "results_section_description"

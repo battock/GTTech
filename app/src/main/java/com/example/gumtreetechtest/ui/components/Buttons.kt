@@ -18,7 +18,7 @@ import com.example.gumtreetechtest.R
 @Composable
 fun StandardButton(modifier: Modifier = Modifier, text: String = "", onClick: () -> Unit = {}) {
     Button(
-        modifier = Modifier
+        modifier = modifier
             .border(
                 dimensionResource(R.dimen.standard_border_thickness),
                 shape = RoundedCornerShape(dimensionResource(id = R.dimen.standard_corner_radius)),

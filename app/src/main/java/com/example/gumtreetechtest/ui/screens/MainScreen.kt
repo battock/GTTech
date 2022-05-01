@@ -6,9 +6,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.example.gumtreetechtest.ui.components.HeaderText
 import com.example.gumtreetechtest.ui.themes.GumTreeAppTheme
 import com.example.gumtreetechtest.ui.viewmodels.MainViewModel
 
@@ -25,6 +29,12 @@ fun MainScreen(
         verticalArrangement = Arrangement.Center
     )
         {
+            HeaderText(
+                modifier = Modifier.semantics {
+                    contentDescription = HEADER_TXT_DESCRIPTION
+                },
+                text = stringResource(R.string.main_header_txt)
+            )
             SearchSection(viewModel =viewModel)
             Spacer(modifier = Modifier
                 .fillMaxWidth()
@@ -49,3 +59,5 @@ fun DarkPreview() {
         MainScreen()
     }
 }
+
+const val HEADER_TXT_DESCRIPTION = "main_header_text_description"
