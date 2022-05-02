@@ -35,15 +35,13 @@ class ProxyTest {
     @get:Rule
     var instantTaskExecutorRule = InstantTaskExecutorRule()
 
-
     @Before
     fun setUp() {
         MockKAnnotations.init(this)
         Dispatchers.setMain(Dispatchers.Unconfined)
-        proxy = CarsProxyImpl(api)
-
         val data = TestUtils.listOfSearchResults
         coEvery { api.fetchCars(any(), any(), any()) } returns ApiResults(searchResults = data)
+        proxy = CarsProxyImpl(api)
     }
 
     @Test

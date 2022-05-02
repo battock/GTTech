@@ -44,7 +44,6 @@ class MainViewModelTest {
         val data = TestUtils.listOfCars
         coEvery { repository.fetchCars(any(), any(), any()) } returns Result.Success(data)
         coEvery { inputValidator.validate(any(), any()) } returns true
-
     }
 
     @Test
@@ -55,9 +54,7 @@ class MainViewModelTest {
             val expectedResult = SearchInput(invalidText = InvalidText.INVALID_MAKE)
             viewModel.upDateResults()
             val actualResult = viewModel.selectedMake.value
-
             assert(expectedResult == actualResult)
-            viewModel.upDateResults()
         }
     }
 
@@ -69,9 +66,7 @@ class MainViewModelTest {
             val expectedResult = SearchInput(invalidText = InvalidText.INVALID_MODEL)
             viewModel.upDateResults()
             val actualResult = viewModel.selectedModel.value
-
             assert(expectedResult == actualResult)
-            viewModel.upDateResults()
         }
     }
 
@@ -83,9 +78,7 @@ class MainViewModelTest {
             val expectedResult = SearchInput(invalidText = InvalidText.INVALID_YEAR)
             viewModel.upDateResults()
             val actualResult = viewModel.selectedYear.value
-
             assert(expectedResult == actualResult)
-            viewModel.upDateResults()
         }
     }
 

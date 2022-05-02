@@ -4,6 +4,7 @@ import com.example.gumtreetechtest.api.CarsApi
 import com.example.gumtreetechtest.network.Result
 import com.example.gumtreetechtest.ui.models.Car
 import com.example.gumtreetechtest.utils.logging
+import com.example.gumtreetechtest.utils.validateStringPrice
 import java.lang.Exception
 import javax.inject.Inject
 
@@ -23,7 +24,7 @@ class CarsProxyImpl @Inject constructor(
                         name = it.name,
                         title = it.title,
                         year = it.year,
-                        price = it.price
+                        price = it.price.validateStringPrice()
                     )
                 })
         } catch (ex: Exception) {
@@ -32,4 +33,5 @@ class CarsProxyImpl @Inject constructor(
         }
     }
 }
+
 
