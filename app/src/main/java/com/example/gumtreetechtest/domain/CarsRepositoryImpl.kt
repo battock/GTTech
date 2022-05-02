@@ -3,7 +3,7 @@ package com.example.gumtreetechtest.domain
 import com.example.gumtreetechtest.proxy.CarsProxy
 import com.example.gumtreetechtest.ui.models.Car
 import javax.inject.Inject
-import com.example.gumtreetechtest.network.Result
+import com.example.gumtreetechtest.networkStates.Result
 
 class CarsRepositoryImpl @Inject constructor(
     val proxy: CarsProxy

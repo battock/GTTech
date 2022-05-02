@@ -3,16 +3,12 @@ package com.example.gumtreetechtest
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.example.gumtreetechtest.api.CarsApi
 import com.example.gumtreetechtest.domain.ApiResults
-import com.example.gumtreetechtest.domain.CarsRepository
-import com.example.gumtreetechtest.domain.CarsRepositoryImpl
-import com.example.gumtreetechtest.domain.SearchResults
-import com.example.gumtreetechtest.network.Result
+import com.example.gumtreetechtest.networkStates.Result
 import com.example.gumtreetechtest.proxy.CarsProxy
 import com.example.gumtreetechtest.proxy.CarsProxyImpl
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.coVerify
-import io.mockk.every
 import io.mockk.impl.annotations.RelaxedMockK
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

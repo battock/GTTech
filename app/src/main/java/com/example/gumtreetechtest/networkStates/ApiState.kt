@@ -1,4 +1,4 @@
-package com.example.gumtreetechtest.network
+package com.example.gumtreetechtest.networkStates
 
 enum class ApiState {
     ERROR,

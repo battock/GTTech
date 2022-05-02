@@ -1,7 +1,8 @@
-package com.example.gumtreetechtest.utils
+package com.example.gumtreetechtest
 
+import com.example.gumtreetechtest.utils.INVALID_PRICE_ERROR
+import com.example.gumtreetechtest.utils.validateStringPrice
 import org.junit.Test
-import org.junit.jupiter.api.Assertions.*
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
 

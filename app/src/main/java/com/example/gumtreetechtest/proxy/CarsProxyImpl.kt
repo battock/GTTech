@@ -1,7 +1,7 @@
 package com.example.gumtreetechtest.proxy
 
 import com.example.gumtreetechtest.api.CarsApi
-import com.example.gumtreetechtest.network.Result
+import com.example.gumtreetechtest.networkStates.Result
 import com.example.gumtreetechtest.ui.models.Car
 import com.example.gumtreetechtest.utils.logging
 import com.example.gumtreetechtest.utils.validateStringPrice

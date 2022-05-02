@@ -2,8 +2,8 @@ package com.example.gumtreetechtest
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.example.gumtreetechtest.domain.CarsRepository
-import com.example.gumtreetechtest.network.ApiState
-import com.example.gumtreetechtest.network.Result
+import com.example.gumtreetechtest.networkStates.ApiState
+import com.example.gumtreetechtest.networkStates.Result
 import com.example.gumtreetechtest.ui.InputValidator
 import com.example.gumtreetechtest.ui.ValidationType
 import com.example.gumtreetechtest.ui.viewmodels.InvalidText

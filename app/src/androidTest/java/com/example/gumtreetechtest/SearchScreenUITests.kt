@@ -6,7 +6,7 @@ import androidx.compose.ui.test.junit4.createComposeRule
 import com.example.gumtreetechtest.ui.screens.SearchSection
 import com.example.gumtreetechtest.ui.screens.UPDATE_SEARCH_RESULTS_BUTTON_DESCRIPTION
 import com.example.gumtreetechtest.ui.themes.GumTreeAppTheme
-import com.example.gumtreetechtest.network.ApiState
+import com.example.gumtreetechtest.networkStates.ApiState
 import com.example.gumtreetechtest.ui.components.INPUT_VALIDATION_ERROR_TEXT
 import com.example.gumtreetechtest.ui.viewmodels.InvalidText
 import com.example.gumtreetechtest.ui.viewmodels.MainViewModel

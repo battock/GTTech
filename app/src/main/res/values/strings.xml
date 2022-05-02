@@ -2,20 +2,22 @@
     <string name="app_name">GumTreeTechTest</string>
     <string name="main_screen">Search</string>
     <string name="info_screen">Info</string>
-    <string name="info_screen_description">
-        \n
-        This is just a second screen so i could add some form of navigatio to this app but also in place of a Read.me file to allow me to explain some of my decisions.
+    <string name="info_screen_description">This is just a second screen, so I could add some form of navigation to this app, but also in place of a Read.me file to allow me to explain some of my decisions.
         There are a few things I didn\'t implement in this app that I would have in a full production app.
         \n\n
         Below are some of the improvements I might make…
         \n\n
-        1)  I would have had drop downs for each make and model box on the search screen to show possible makes and also their associated models. I considered implementing a basic drop down option but thought it would be a lot of effort and to get any real effect I\'d have to add quite a lot of make and model options.
+        1)  I would have had drop downs for each make and model box on the search screen to show possible makes and also their associated models. I considered implementing a basic drop down option, but thought that in order to get any real effect I\'d have to add quite a lot of make and model options.
         \n\n
-        2)  Drop down in the year box to show all available years. I would thnk in a proper app this information would be provided through an api on start up of the search screen to show all available options.
+        2)  Drop down in the year box to show all available years. I would think in a proper app this information would be provided through an API on start up of the search screen to show all available options.
         \n\n
-        3)  I have not added any filters or sorting to the results etc as it was not specified in the test criteria but in a full app it would be fairly easy to set up filtering and sortign options for the results.
+        3)  I have not added any filters or sorting to the results etc as it was not specified in the test criteria, but in a full app it would be fairly easy to set up filtering and sorting options for the results.
         \n\n
-        4)  I added a sealed class to track the network response. I haven\'t added a loading enum or a progress spinner for this MVP but the sealed class allows for that sort of thing to be added quite easily later. I only added error and success scenarios to show how it would be handled.
+        4)  I added a sealed class to track the network response. I haven\'t added a loading enum or a progress spinner for this MVP, but the sealed class allows for that sort of thing to be added quite easily later. I only added error and success scenarios to show how it would be handled.
+        \n\n
+        5)  I wanted to add animations as these are very easy to implement in Compose, however there was no obvious place to do so and as such I didn\'t use any.
+        \n\n
+        6) The API calls are performed using a simple coroutine in the viewmodel which is the recommended approach by Andoird/Google however in a larger app I woudl probably use Flow or RxJava.
         \n\n
         \n\n\n\n
     </string>
@@ -28,5 +30,6 @@
     <string name="generic_invalid_txt_message">invalid input</string>
     <string name="update_search_txt">Update your search to see some cars</string>
     <string name="error_fetching_cars_txt">Error fetching cars</string>
+    <string name="info_screen_text">Info screen</string>
 
 </resources>

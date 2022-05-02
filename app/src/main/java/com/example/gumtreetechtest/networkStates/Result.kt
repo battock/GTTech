@@ -1,4 +1,4 @@
-package com.example.gumtreetechtest.network
+package com.example.gumtreetechtest.networkStates
 
 sealed class Result<out T : Any> {
     data class Success<out T : Any>(val data: T) : Result<T>()

@@ -4,15 +4,13 @@ import androidx.annotation.VisibleForTesting
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.*
-import com.example.gumtreetechtest.network.Result
+import com.example.gumtreetechtest.networkStates.Result
 import com.example.gumtreetechtest.domain.CarsRepository
-import com.example.gumtreetechtest.network.ApiState
+import com.example.gumtreetechtest.networkStates.ApiState
 import com.example.gumtreetechtest.ui.InputValidator
 import com.example.gumtreetechtest.ui.ValidationType
 import com.example.gumtreetechtest.ui.models.Car
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 

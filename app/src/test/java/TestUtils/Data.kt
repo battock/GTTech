@@ -1,7 +1,7 @@
 package TestUtils
 
 import com.example.gumtreetechtest.domain.SearchResults
-import com.example.gumtreetechtest.network.Result
+import com.example.gumtreetechtest.networkStates.Result
 import com.example.gumtreetechtest.ui.models.Car
 
 val failedApiResult by lazy {

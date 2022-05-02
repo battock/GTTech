@@ -8,15 +8,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.semantics.contentDescription
-import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.gumtreetechtest.R
 import com.example.gumtreetechtest.ui.components.DescriptionText
 import com.example.gumtreetechtest.ui.components.ScrollingList
 import com.example.gumtreetechtest.ui.themes.GumTreeAppTheme
-import com.example.gumtreetechtest.network.ApiState
+import com.example.gumtreetechtest.networkStates.ApiState
 import com.example.gumtreetechtest.ui.components.ErrorText
 import com.example.gumtreetechtest.ui.viewmodels.MainViewModel
 

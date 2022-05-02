@@ -38,7 +38,7 @@ fun InfoScreen(
     )
         {
             Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.small_padding)))
-            HeaderText(text = "Info screen",
+            HeaderText(text = stringResource(R.string.info_screen_text),
                 color = MaterialTheme.colors.surface)
             DescriptionText(text = stringResource(R.string.info_screen_description),
                 color = MaterialTheme.colors.surface)

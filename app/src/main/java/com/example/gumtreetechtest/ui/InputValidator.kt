@@ -2,6 +2,7 @@ package com.example.gumtreetechtest.ui
 
 import android.util.Log
 import com.example.gumtreetechtest.ui.screens.SEARCH_SECTION_LOGGING_TAG
+import com.example.gumtreetechtest.utils.logging
 import java.lang.NumberFormatException
 
 /*
@@ -45,7 +46,11 @@ class InputValidator {
             }
         }
         allInputsValid = validModel && validMake && validYear
+        logging(INPUTVALIDATOR_LOGGING_TAG, "input is valid : $isValid")
         return isValid
+    }
+    companion object inputValidatorTag{
+        private const val INPUTVALIDATOR_LOGGING_TAG ="InputValidator"
     }
 }
 
