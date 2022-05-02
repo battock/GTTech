@@ -18,7 +18,7 @@ fun HeaderText(
     color:Color = MaterialTheme.colors.primaryVariant
 ) {
     Text(
-        modifier = Modifier.wrapContentSize(),
+        modifier = modifier.wrapContentSize(),
         text = text,
         color = color,
         style = MaterialTheme.typography.h5

@@ -26,18 +26,17 @@ fun InfoScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .wrapContentSize()
             .padding(
                 horizontal = dimensionResource(id = R.dimen.medium_padding),
-                vertical = dimensionResource(id = R.dimen.small_padding)
+                vertical = dimensionResource(id = R.dimen.info_screen_padding)
             )
             .verticalScroll(scrollState),
-        horizontalAlignment = Alignment.CenterHorizontally,
+        horizontalAlignment = Alignment.Start,
         verticalArrangement = Arrangement.Top,
 
     )
         {
-            Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.small_padding)))
+            Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.info_screen_padding)))
             HeaderText(text = stringResource(R.string.info_screen_text),
                 color = MaterialTheme.colors.surface)
             DescriptionText(text = stringResource(R.string.info_screen_description),

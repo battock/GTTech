@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Padding sizes-->
+    <dimen name="extra_large_padding">70dp</dimen>
+    <dimen name="large_padding">24dp</dimen>
+    <dimen name="medium_padding">30dp</dimen>
+    <dimen name="standard_padding">14dp</dimen>
+    <dimen name="small_padding">4dp</dimen>
+    <dimen name="info_screen_padding">16dp</dimen>
+
+     <dimen name="logo_height">60dp</dimen>
+    <dimen name="logo_width">220dp</dimen>
+
+    <dimen name="standard_component_height">65dp</dimen>
+    <dimen name="large_component_height">150dp</dimen>
+    <dimen name="standard_component_width">120dp</dimen>
+    <dimen name="standard_corner_radius">8dp</dimen>
+    <dimen name="standard_border_thickness">2dp</dimen>
+
+    standard_component_height
+</resources>
