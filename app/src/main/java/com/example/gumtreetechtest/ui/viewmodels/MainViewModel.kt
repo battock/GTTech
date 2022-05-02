@@ -78,7 +78,6 @@ class MainViewModel @Inject constructor(
     fun validateInputs(): Boolean =
         validateMake() && validateModel() && validateYear()
 
-
     /*
     Validate make
      */

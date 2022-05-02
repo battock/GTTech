@@ -17,7 +17,7 @@
         \n\n
         5)  I wanted to add animations as these are very easy to implement in Compose, however there was no obvious place to do so and as such I didn\'t use any.
         \n\n
-        6) The API calls are performed using a simple coroutine in the viewmodel which is the recommended approach by Andoird/Google however in a larger app I woudl probably use Flow or RxJava.
+        6) The API calls are performed using a simple Coroutine in the Viewmodel which is the recommended approach by Andoird/Google however in a larger app I would probably use Flow or RxJava.
         \n\n
         \n\n\n\n
     </string>
