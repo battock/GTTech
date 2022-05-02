@@ -11,7 +11,6 @@ import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.navigation.NavController
 import com.example.gumtreetechtest.ui.components.HeaderText
 import com.example.gumtreetechtest.ui.themes.GumTreeAppTheme
 import com.example.gumtreetechtest.ui.viewmodels.MainViewModel

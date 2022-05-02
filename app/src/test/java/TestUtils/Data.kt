@@ -1,8 +1,12 @@
 package TestUtils
 
-import android.app.appsearch.SearchResult
 import com.example.gumtreetechtest.domain.SearchResults
+import com.example.gumtreetechtest.network.Result
 import com.example.gumtreetechtest.ui.models.Car
+
+val failedApiResult by lazy {
+    Result.Error(Exception("error"))
+}
 
 val listOfCars by lazy {
     listOf(
