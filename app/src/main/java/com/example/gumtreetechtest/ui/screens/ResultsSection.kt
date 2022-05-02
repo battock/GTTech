@@ -8,6 +8,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.gumtreetechtest.R
@@ -25,39 +27,43 @@ fun ResultsSection(
 ) {
     val state = viewModel.apiState.value
     val results = viewModel.resultsData.value
+    var txtComposable: @Composable () -> Unit = { DescriptionText("") }
 
-    Box(modifier = modifier
-        .wrapContentHeight()
-        .fillMaxWidth()
-        .padding(horizontal = dimensionResource(id = R.dimen.standard_padding))
-    ){
-        when(state){
-            ApiState.ERROR->{
-                Column(
-                    Modifier
-                        .fillMaxSize()
-                        .padding(
-                            dimensionResource(id = R.dimen.medium_padding)
-                        ),
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.Center
-                ) {
-                    ErrorText(text = stringResource(R.string.error_fetching_cars_txt))
+    Box(
+        modifier = modifier
+            .wrapContentHeight()
+            .fillMaxWidth()
+            .padding(horizontal = dimensionResource(id = R.dimen.standard_padding))
+    ) {
+        when (state) {
+            ApiState.ERROR -> {
+                txtComposable =
+                    { ErrorText(text = stringResource(R.string.error_fetching_cars_txt)) }
+            }
+            ApiState.SUCCESS -> {
+                ScrollingList(
+                    items= results)
+            }
+            else -> {
+                txtComposable = {
+                    DescriptionText(
+                        text = stringResource(R.string.update_search_txt),
+                        color = MaterialTheme.colors.surface
+                    )
                 }
             }
-            ApiState.SUCCESS->{
-                ScrollingList(results)
-            }
         }
-        Row(modifier = Modifier
-            .fillMaxSize()
-            .padding(dimensionResource(id = R.dimen.large_padding)),
+        Row(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(dimensionResource(id = R.dimen.large_padding)),
             horizontalArrangement = Arrangement.Center,
             verticalAlignment = Alignment.CenterVertically
-        ){
-            DescriptionText(text = stringResource(R.string.update_search_txt), color = MaterialTheme.colors.surface)
+        ) {
+            txtComposable.invoke()
         }
     }
+
 }
 
 @Preview(showBackground = true)

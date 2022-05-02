@@ -28,8 +28,8 @@ fun ScrollingList(items: List<Car>) = if (items.size > 0) {
             Alignment.CenterVertically
         ),
         modifier = Modifier
-            .fillMaxSize()
             .semantics { contentDescription = RESULTS_SECTION_DESCRIPTION }
+            .fillMaxSize()
     ) {
         items(items) { item ->
             CarListItem(item)

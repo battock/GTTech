@@ -56,11 +56,11 @@ fun ErrorText(
 fun DescriptionText(
     text: String,
     @StringRes txtRes: Int = R.string.app_name,
-    modifier: Modifier = Modifier.wrapContentSize(),
+    modifier: Modifier = Modifier,
     color:Color = MaterialTheme.colors.background
 ) {
     Text(
-        modifier =Modifier.wrapContentSize(),
+        modifier =modifier.wrapContentSize(),
         text = text,
         color = color,
         style = MaterialTheme.typography.body1
