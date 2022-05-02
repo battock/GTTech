@@ -25,7 +25,7 @@ fun MainScreen(
             .fillMaxSize()
             .padding(dimensionResource(id = R.dimen.standard_padding)),
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
+        verticalArrangement = Arrangement.Top
     )
         {
             Spacer(modifier = Modifier
